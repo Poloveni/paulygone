@@ -106,8 +106,8 @@ if (contactForm) {
             formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY_HERE');
             
             // Add additional data
-            formData.append('subject', 'Nouveau message depuis le site Web Creation');
-            formData.append('from_name', 'Site Web Creation - Dépannage PC Gard');
+            formData.append('subject', 'Nouveau message depuis le site Web Creation - Paulygone');
+            formData.append('from_name', 'Site Web Creation - Paulygone');
             
             const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
@@ -214,6 +214,6 @@ document.querySelectorAll('.stat-number').forEach(stat => {
     statsObserver.observe(stat);
 });
 
-console.log('🚀 Dépannage PC Gard - Web Creation site loaded');
+console.log('🚀 Paulygone - Web Creation site loaded');
 console.log('📧 Contact: contact@depannagepcgard.fr');
 console.log('📱 Tel: 06 37 12 76 88');
