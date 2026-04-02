@@ -1,17 +1,3 @@
-// Barre de progression de lecture
-const progressBar = document.getElementById('progressBar');
-
-window.addEventListener('scroll', () => {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight - windowHeight;
-    const scrolled = window.pageYOffset;
-    const progress = (scrolled / documentHeight) * 100;
-    
-    if (progressBar) {
-        progressBar.style.width = progress + '%';
-    }
-});
-
 // Navigation mobile toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
