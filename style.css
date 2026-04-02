@@ -293,37 +293,6 @@ body {
     z-index: 0;
 }
 
-/* Vidéo d'arrière-plan hero */
-.hero-video-container {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    opacity: 0.25;
-    filter: blur(2px);
-}
-
-.hero-video-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, 
-        rgba(250, 250, 248, 0.75) 0%, 
-        rgba(250, 250, 248, 0.65) 50%, 
-        rgba(250, 250, 248, 0.75) 100%);
-    backdrop-filter: blur(1px);
-}
-
 .gradient-orb {
     position: absolute;
     border-radius: 50%;
@@ -666,129 +635,6 @@ section {
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
-}
-
-/* Video Showcase Section */
-.video-showcase {
-    padding: var(--section-padding) 0;
-    background: var(--background);
-    position: relative;
-    overflow: hidden;
-}
-
-.video-showcase::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
-}
-
-.video-showcase-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-}
-
-.video-showcase-text .section-title {
-    text-align: left;
-    margin-bottom: 24px;
-}
-
-.video-showcase-description {
-    font-size: 18px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 48px;
-}
-
-.video-showcase-features {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.feature-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.feature-icon {
-    width: 56px;
-    height: 56px;
-    background: var(--gradient-primary);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    flex-shrink: 0;
-    box-shadow: 0 4px 16px rgba(201, 169, 97, 0.2);
-}
-
-.feature-item h4 {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--text-primary);
-}
-
-.feature-item p {
-    font-size: 15px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-.video-showcase-player {
-    position: relative;
-}
-
-.video-frame {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--border);
-    background: var(--secondary);
-    aspect-ratio: 16/10;
-}
-
-.showcase-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.video-play-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-}
-
-.video-frame:hover .video-play-overlay {
-    opacity: 1;
-}
-
-.play-button {
-    transform: scale(1);
-    transition: transform 0.3s ease;
-}
-
-.video-frame:hover .play-button {
-    transform: scale(1.1);
-    animation: pulse 2s infinite;
 }
 
 /* Portfolio Section */
@@ -1158,34 +1004,6 @@ section {
     background: var(--surface);
     box-shadow: inset 0 1px 0 var(--border);
     position: relative;
-    overflow: hidden;
-}
-
-.contact-video-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.contact-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.12;
-    filter: blur(2px);
-}
-
-.contact-video-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(255, 255, 255, 0.90) 100%);
-}
-
-.contact .container {
-    position: relative;
-    z-index: 1;
 }
 
 .contact-wrapper {
@@ -1435,11 +1253,6 @@ section {
 
     .nav-toggle {
         display: flex;
-    }
-
-    .video-showcase-content {
-        grid-template-columns: 1fr;
-        gap: 60px;
     }
 
     .contact-wrapper {
