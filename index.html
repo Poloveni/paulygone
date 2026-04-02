@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Barre de progression de lecture -->
+    <div class="progress-bar" id="progressBar"></div>
+    
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
@@ -35,6 +38,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg">
+            <!-- Vidéo d'arrière-plan -->
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-elegant-gold-particles-floating-slowly-43545-large.mp4" type="video/mp4">
+                </video>
+                <div class="hero-video-overlay"></div>
+            </div>
+            
             <div class="gradient-orb orb-1"></div>
             <div class="gradient-orb orb-2"></div>
             <div class="gradient-orb orb-3"></div>
@@ -83,6 +94,60 @@
         <div class="scroll-indicator">
             <span>Scroll</span>
             <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Video Showcase Section -->
+    <section class="video-showcase">
+        <div class="container">
+            <div class="video-showcase-content">
+                <div class="video-showcase-text" data-aos="fade-right">
+                    <span class="section-label">Notre approche</span>
+                    <h2 class="section-title">L'excellence dans<br>chaque détail</h2>
+                    <p class="video-showcase-description">
+                        Chaque projet est une œuvre unique. De la conception à la mise en ligne, nous créons des expériences web qui captivent vos visiteurs et transforment votre vision en réalité digitale exceptionnelle.
+                    </p>
+                    <div class="video-showcase-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✨</div>
+                            <div>
+                                <h4>Design sur-mesure</h4>
+                                <p>Identité visuelle unique et mémorable</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⚡</div>
+                            <div>
+                                <h4>Performance optimale</h4>
+                                <p>Sites ultra-rapides et référencés</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎯</div>
+                            <div>
+                                <h4>Accompagnement complet</h4>
+                                <p>De l'idée à la réussite en ligne</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-showcase-player" data-aos="fade-left">
+                    <div class="video-frame">
+                        <video autoplay muted loop playsinline class="showcase-video">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-person-typing-on-a-laptop-4904-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-play-overlay">
+                            <div class="play-button">
+                                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                    <circle cx="32" cy="32" r="30" stroke="white" stroke-width="2" opacity="0.8"/>
+                                    <path d="M26 20L44 32L26 44V20Z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -372,6 +437,12 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
+        <div class="contact-video-bg">
+            <video autoplay muted loop playsinline class="contact-video">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-office-desk-with-laptop-and-coffee-9142-large.mp4" type="video/mp4">
+            </video>
+            <div class="contact-video-overlay"></div>
+        </div>
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-info" data-aos="fade-right">

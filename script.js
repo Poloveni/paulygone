@@ -1,3 +1,17 @@
+// Barre de progression de lecture
+const progressBar = document.getElementById('progressBar');
+
+window.addEventListener('scroll', () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+    const scrolled = window.pageYOffset;
+    const progress = (scrolled / documentHeight) * 100;
+    
+    if (progressBar) {
+        progressBar.style.width = progress + '%';
+    }
+});
+
 // Navigation mobile toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -217,3 +231,40 @@ document.querySelectorAll('.stat-number').forEach(stat => {
 console.log('🚀 Paulygone - Web Creation site loaded');
 console.log('📧 Contact: contact@depannagepcgard.fr');
 console.log('📱 Tel: 06 37 12 76 88');
+
+// Vidéo showcase - Play/Pause au clic
+const showcaseVideo = document.querySelector('.showcase-video');
+const videoFrame = document.querySelector('.video-frame');
+
+if (showcaseVideo && videoFrame) {
+    videoFrame.addEventListener('click', () => {
+        if (showcaseVideo.paused) {
+            showcaseVideo.play();
+        } else {
+            showcaseVideo.pause();
+        }
+    });
+}
+
+// Performance - Pause des vidéos hors de la vue
+const observerOptions = {
+    threshold: 0.25
+};
+
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+}, observerOptions);
+
+// Observer toutes les vidéos
+document.querySelectorAll('video').forEach(video => {
+    if (video.autoplay) {
+        videoObserver.observe(video);
+    }
+});
