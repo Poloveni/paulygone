@@ -51,11 +51,11 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
-        nav.style.background = 'rgba(250, 250, 248, 0.98)';
-        nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+        nav.style.background = 'linear-gradient(135deg, #1a252f 0%, #2c3e50 100%)';
+        nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
     } else {
-        nav.style.background = 'rgba(250, 250, 248, 0.95)';
-        nav.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+        nav.style.background = 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)';
+        nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
     }
     
     lastScroll = currentScroll;

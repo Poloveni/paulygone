@@ -254,11 +254,11 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(250, 250, 248, 0.95);
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -274,12 +274,12 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
 }
 
@@ -301,7 +301,7 @@ body {
 
 .logo-subtitle {
     font-size: 11px;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -314,7 +314,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
@@ -323,7 +323,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .nav-links a::after {
@@ -382,7 +382,7 @@ body {
 .nav-toggle span {
     width: 24px;
     height: 2px;
-    background: var(--text-primary);
+    background: #ffffff;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -1381,15 +1381,15 @@ section {
         left: 0;
         right: 0;
         flex-direction: column;
-        background: rgba(250, 250, 248, 0.98);
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         backdrop-filter: blur(20px);
         padding: 40px 24px;
         gap: 24px;
         transform: translateY(-100%);
         opacity: 0;
         transition: all 0.3s ease;
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     .nav-links.active {
