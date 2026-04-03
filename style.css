@@ -273,6 +273,18 @@ body {
 .logo {
     text-decoration: none;
     display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo-text-container {
+    display: flex;
     flex-direction: column;
     gap: 2px;
 }
