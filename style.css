@@ -311,17 +311,17 @@ body {
     transform: translate(-50%, -50%) scale(1.2);
     object-fit: cover;
     object-position: center 45%;
-    opacity: 0.18;
-    filter: blur(1px);
+    opacity: 0.35;
+    filter: blur(0px);
 }
 
 .hero-image-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, 
-        rgba(250, 250, 248, 0.88) 0%, 
-        rgba(250, 250, 248, 0.80) 50%, 
-        rgba(250, 250, 248, 0.88) 100%);
+        rgba(250, 250, 248, 0.70) 0%, 
+        rgba(250, 250, 248, 0.60) 50%, 
+        rgba(250, 250, 248, 0.70) 100%);
 }
 
 .gradient-orb {
