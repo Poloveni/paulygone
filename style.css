@@ -696,6 +696,13 @@ body {
     margin-bottom: 8px;
 }
 
+.stat-unit {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
 .stat-label {
     font-size: 14px;
     color: var(--text-secondary);
