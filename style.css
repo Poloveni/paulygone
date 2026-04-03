@@ -113,6 +113,9 @@
 @keyframes shootingStar {
     0% {
         transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 0;
+    }
+    1% {
         opacity: 1;
     }
     70% {
@@ -140,6 +143,7 @@
     border-radius: 50%;
     box-shadow: 0 0 10px 2px rgba(201, 169, 97, 0.8);
     animation: shootingStar 3s linear infinite;
+    opacity: 0;
 }
 
 .star::before {
