@@ -308,9 +308,10 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.2);
     object-fit: cover;
-    opacity: 0.15;
+    object-position: center 45%;
+    opacity: 0.18;
     filter: blur(1px);
 }
 
