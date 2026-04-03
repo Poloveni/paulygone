@@ -293,6 +293,36 @@ body {
     z-index: 0;
 }
 
+/* Image d'arrière-plan Maison Carrée */
+.hero-image-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.15;
+    filter: blur(1px);
+}
+
+.hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(250, 250, 248, 0.88) 0%, 
+        rgba(250, 250, 248, 0.80) 50%, 
+        rgba(250, 250, 248, 0.88) 100%);
+}
+
 .gradient-orb {
     position: absolute;
     border-radius: 50%;
