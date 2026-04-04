@@ -660,15 +660,6 @@ body {
     position: relative;
 }
 
-.gradient-text::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-gold-shine);
-    animation: shimmer 3s infinite;
-    -webkit-background-clip: text;
-    background-clip: text;
-}
 
 .hero-description {
     font-size: 20px;
