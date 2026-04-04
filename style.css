@@ -688,18 +688,18 @@ body {
 }
 
 .stat-number {
-    font-family: var(--font-display);
+    font-family: 'Inter', var(--font-body), sans-serif;
     font-size: 56px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary);
     line-height: 1;
     margin-bottom: 8px;
 }
 
 .stat-unit {
-    font-family: var(--font-display);
+    font-family: 'Inter', var(--font-body), sans-serif;
     font-size: 56px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary);
 }
 
