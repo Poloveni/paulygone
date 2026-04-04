@@ -698,9 +698,11 @@ body {
 
 .stat-unit {
     font-family: 'Inter', var(--font-body), sans-serif;
-    font-size: 56px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 600;
     color: var(--primary);
+    opacity: 0.85;
+    margin-left: 2px;
 }
 
 .stat-label {
