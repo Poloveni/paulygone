@@ -650,17 +650,6 @@ body {
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3), 0 4px 40px rgba(0, 0, 0, 0.2);
 }
 
-.hero-title::after {
-    content: '';
-    position: absolute;
-    bottom: -16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
-}
 
 .gradient-text {
     background: var(--gradient-text);
