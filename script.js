@@ -142,3 +142,47 @@ if (canvas) {
     
     animate();
 }
+
+// Form submission handling avec Web3Forms
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+        
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Envoi en cours...';
+        submitBtn.disabled = true;
+        
+        const formData = new FormData(contactForm);
+        formData.append('access_key', '1a79de7f-cdea-4b44-bd65-ef53ac8cf7d6');
+        
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                submitBtn.textContent = '✅ Message envoyé !';
+                contactForm.reset();
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error('Erreur lors de l\'envoi');
+            }
+        } catch (error) {
+            submitBtn.textContent = '❌ Erreur. Réessayez.';
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+        }
+    });
+}
