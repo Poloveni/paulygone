@@ -3,159 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paulygone - Création de Sites Web Modernes | Nîmes</title>
+    <title>Paulygone — Création Web à Nîmes</title>
     <meta name="description" content="Création de sites web modernes et performants à Nîmes. Design créatif, développement sur-mesure, SEO optimisé. Portfolio de projets réalisés dans le Gard.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Barre de progression de lecture -->
+
+    <!-- Barre de progression -->
     <div class="progress-bar" id="progressBar"></div>
-    
+
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
             <a href="#" class="logo">
-                <img src="logo.png" alt="Logo Paulygone" class="logo-icon">
-                <div class="logo-text-container">
-                    <span class="logo-text">Paulygone</span>
-                    <span class="logo-subtitle">Web Creation</span>
+                <img src="logo.png" alt="Paulygone" class="logo-img">
+                <div>
+                    <span class="logo-name">Paulygone</span>
+                    <span class="logo-sub">Web Creation</span>
                 </div>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="#portfolio">Portfolio</a>
                 <a href="#services">Services</a>
                 <a href="#processus">Processus</a>
-                <a href="#contact" class="nav-cta">Contact</a>
+                <a href="#contact" class="nav-contact">Contact</a>
             </div>
-            <button class="nav-toggle" aria-label="Menu">
-                <span></span>
+            <button class="nav-burger" id="navBurger" aria-label="Menu">
                 <span></span>
                 <span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-bg">
-            <!-- Image d'arrière-plan Maison Carrée -->
-            <div class="hero-image-container">
-                <img src="maison-carree-nimes.jpg" alt="Maison Carrée de Nîmes" class="hero-image">
-                <div class="hero-image-overlay"></div>
-            </div>
-            
-            <!-- Étoiles filantes dorées -->
-            <div class="stars-container">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-            </div>
-            
-            <!-- Particules dorées flottantes -->
-            <div class="particles-container">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-            
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-            <div class="grid-overlay"></div>
+        <div class="hero-media">
+            <img src="maison-carree-nimes.jpg" alt="Maison Carrée de Nîmes" class="hero-img">
         </div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Disponible pour vos projets 2026
-            </div>
-            <h1 class="hero-title">
-                Créons ensemble
-                <span class="gradient-text">votre présence</span>
+        <div class="hero-inner">
+            <p class="hero-eyebrow fade-up">Disponible pour vos projets 2026</p>
+            <h1 class="hero-title fade-up delay-1">
+                Créons ensemble<br>
+                <em>votre présence</em><br>
                 digitale
             </h1>
-            <p class="hero-description">
-                Design créatif, développement sur-mesure et optimisation SEO pour propulser votre présence digitale. Basé à Nîmes, je transforme vos idées en expériences web mémorables.
-            </p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">
-                    Démarrer un projet
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                    Voir mes réalisations
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Années d'expérience IT</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Sites responsives</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">30km</div>
-                    <div class="stat-label">Rayon d'intervention</div>
-                </div>
+            <p class="hero-sub fade-up delay-2">Design créatif, développement sur-mesure et optimisation SEO. Basé à Nîmes, je transforme vos idées en expériences web mémorables.</p>
+            <div class="hero-actions fade-up delay-3">
+                <a href="#contact" class="btn btn-gold">Démarrer un projet</a>
+                <a href="#portfolio" class="btn btn-ghost">Voir mes réalisations</a>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+        <div class="hero-stats fade-up delay-4">
+            <div class="hero-stat">
+                <span class="stat-n">15+</span>
+                <span class="stat-l">Années d'expérience IT</span>
+            </div>
+            <div class="hero-stat">
+                <span class="stat-n">100%</span>
+                <span class="stat-l">Sites responsives</span>
+            </div>
+            <div class="hero-stat">
+                <span class="stat-n">30km</span>
+                <span class="stat-l">Rayon d'intervention</span>
+            </div>
         </div>
     </section>
 
-    <!-- Séparateur doré -->
-    <div class="section-divider">
-        <div class="divider-line">
-            <div class="divider-ornament"></div>
-        </div>
-    </div>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <!-- Background animé premium -->
-        <div class="portfolio-video-bg">
-            <canvas id="portfolioCanvas" class="portfolio-canvas"></canvas>
-            <div class="portfolio-video-overlay"></div>
-        </div>
-        
+    <!-- Portfolio -->
+    <section id="portfolio" class="section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Portfolio</span>
-                <h2 class="section-title">Projets récents</h2>
-                <p class="section-description">Une sélection de sites web conçus et développés avec passion</p>
-            </div>
+            <header class="section-head reveal">
+                <span class="eyebrow">Portfolio</span>
+                <h2>Projets récents</h2>
+                <p>Une sélection de sites web conçus et développés avec passion</p>
+            </header>
 
             <div class="portfolio-grid">
-                <!-- MCRestor30 -->
-                <a href="https://www.mcrestor30.fr/" target="_blank" class="portfolio-item-link">
+
+                <a href="https://www.mcrestor30.fr/" target="_blank" class="portfolio-item-link reveal">
                     <article class="portfolio-item">
                         <div class="portfolio-image">
                             <div class="portfolio-overlay">
-                                <span class="portfolio-link">
+                                <span class="portfolio-visit">
                                     Visiter le site
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                                         <path d="M6 3H3V13H13V10M10 3H13M13 3V6M13 3L6 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
@@ -168,20 +102,19 @@
                             <div class="portfolio-tags">
                                 <span class="tag">Design sur-mesure</span>
                                 <span class="tag">SEO</span>
-                                <span class="tag">Gallery</span>
+                                <span class="tag">Galerie</span>
                             </div>
                         </div>
                     </article>
                 </a>
 
-                <!-- Dépannage PC Gard -->
-                <a href="https://www.depannagepcgard.fr/" target="_blank" class="portfolio-item-link">
+                <a href="https://www.depannagepcgard.fr/" target="_blank" class="portfolio-item-link reveal">
                     <article class="portfolio-item">
                         <div class="portfolio-image">
                             <div class="portfolio-overlay">
-                                <span class="portfolio-link">
+                                <span class="portfolio-visit">
                                     Visiter le site
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                                         <path d="M6 3H3V13H13V10M10 3H13M13 3V6M13 3L6 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
@@ -190,7 +123,7 @@
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Dépannage PC Gard</h3>
-                            <p class="portfolio-description">Plateforme complète de dépannage informatique et montage PC gaming dans le Gard. Interface WordPress avec configurateur personnalisé, système de réservation Cal.com et avis Google intégrés.</p>
+                            <p class="portfolio-description">Plateforme complète de dépannage informatique et montage PC gaming. Interface WordPress avec réservation Cal.com et avis Google intégrés.</p>
                             <div class="portfolio-tags">
                                 <span class="tag">WordPress</span>
                                 <span class="tag">Booking</span>
@@ -200,14 +133,13 @@
                     </article>
                 </a>
 
-                <!-- ShowRoom d'Oliv -->
-                <a href="https://show-room-oliv.fr/" target="_blank" class="portfolio-item-link">
+                <a href="https://show-room-oliv.fr/" target="_blank" class="portfolio-item-link reveal">
                     <article class="portfolio-item">
                         <div class="portfolio-image">
                             <div class="portfolio-overlay">
-                                <span class="portfolio-link">
+                                <span class="portfolio-visit">
                                     Visiter le site
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                                         <path d="M6 3H3V13H13V10M10 3H13M13 3V6M13 3L6 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
@@ -216,7 +148,7 @@
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">ShowRoom d'Oliv</h3>
-                            <p class="portfolio-description">Site vitrine élégant pour showroom mode et accessoires. Design raffiné avec basculement thème clair/sombre, optimisation performance et conformité légale complète.</p>
+                            <p class="portfolio-description">Site vitrine élégant pour showroom mode et accessoires. Design raffiné avec basculement thème clair/sombre et optimisation performance.</p>
                             <div class="portfolio-tags">
                                 <span class="tag">Vitrine</span>
                                 <span class="tag">Performance</span>
@@ -226,14 +158,13 @@
                     </article>
                 </a>
 
-                <!-- Le Boudoir de Karoline -->
-                <a href="https://poloveni.github.io/leboudoir_dekaroline/" target="_blank" class="portfolio-item-link">
+                <a href="https://poloveni.github.io/leboudoir_dekaroline/" target="_blank" class="portfolio-item-link reveal">
                     <article class="portfolio-item">
                         <div class="portfolio-image">
                             <div class="portfolio-overlay">
-                                <span class="portfolio-link">
+                                <span class="portfolio-visit">
                                     Visiter le site
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                                         <path d="M6 3H3V13H13V10M10 3H13M13 3V6M13 3L6 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
@@ -242,225 +173,170 @@
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Le Boudoir de Karoline</h3>
-                            <p class="portfolio-description">Portfolio artisanal pour créatrice de crochet avec galerie interactive de 75 photos. Design délicat rose/crème/or, lightbox immersive et formulaire de contact Web3Forms pour commandes personnalisées.</p>
+                            <p class="portfolio-description">Portfolio artisanal pour créatrice de crochet avec galerie interactive de 75 photos. Design délicat rose/crème/or et formulaire de commandes personnalisées.</p>
                             <div class="portfolio-tags">
                                 <span class="tag">Artisanat</span>
                                 <span class="tag">Galerie</span>
-                                <span class="tag">Design délicat</span>
+                                <span class="tag">Sur-mesure</span>
                             </div>
                         </div>
                     </article>
                 </a>
+
             </div>
         </div>
     </section>
 
-    <!-- Séparateur doré -->
-    <div class="section-divider">
-        <div class="divider-line">
-            <div class="divider-ornament"></div>
-        </div>
-    </div>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <!-- Background animé -->
-        <div class="services-bg">
-            <div class="services-gradient-orb services-orb-1"></div>
-            <div class="services-gradient-orb services-orb-2"></div>
-            <div class="services-gradient-orb services-orb-3"></div>
-            <div class="services-particles">
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-                <div class="services-particle"></div>
-            </div>
-        </div>
-        
+    <!-- Services -->
+    <section id="services" class="section section-alt">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Services</span>
-                <h2 class="section-title">Une expertise complète</h2>
-                <p class="section-description">Du design à la mise en ligne, je gère chaque aspect de votre projet web</p>
-            </div>
+            <header class="section-head reveal">
+                <span class="eyebrow">Services</span>
+                <h2>Une expertise complète</h2>
+                <p>Du design à la mise en ligne, je gère chaque aspect de votre projet web</p>
+            </header>
 
             <div class="services-grid">
-                <div class="service-card">
+
+                <div class="service-card reveal">
                     <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M4 8H28M4 16H28M4 24H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <path d="M4 8H28M4 16H28M4 24H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Design sur-mesure</h3>
                     <p class="service-description">Création de maquettes et identités visuelles uniques qui reflètent votre personnalité de marque. Pas de templates génériques.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M12 4L4 8V14C4 21 8 26 12 28C16 26 20 21 20 14V8L12 4Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M20 12L28 8V14C28 21 24 26 20 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <path d="M12 4L4 8V14C4 21 8 26 12 28C16 26 20 21 20 14V8L12 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 12L28 8V14C28 21 24 26 20 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Développement moderne</h3>
                     <p class="service-description">Code propre et optimisé avec les dernières technologies web. Sites rapides, sécurisés et 100% responsives.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2.5"/>
-                            <path d="M16 8V16L22 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 8V16L22 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">SEO & Performance</h3>
                     <p class="service-description">Optimisation pour les moteurs de recherche et performances PageSpeed. Votre site visible et ultra-rapide.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <rect x="4" y="4" width="24" height="24" rx="3" stroke="currentColor" stroke-width="2.5"/>
-                            <path d="M4 12H28M12 4V28" stroke="currentColor" stroke-width="2.5"/>
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="4" width="24" height="24" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4 12H28M12 4V28" stroke="currentColor" stroke-width="2"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Intégrations & Outils</h3>
-                    <p class="service-description">Formulaires de contact, galeries photos, Google Reviews, réservation en ligne... Tous les outils dont vous avez besoin.</p>
+                    <p class="service-description">Formulaires, galeries, Google Reviews, réservation en ligne… Tous les outils dont vous avez besoin.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M8 4H24C26.2091 4 28 5.79086 28 8V24C28 26.2091 26.2091 28 24 28H8C5.79086 28 4 26.2091 4 24V8C4 5.79086 5.79086 4 8 4Z" stroke="currentColor" stroke-width="2.5"/>
-                            <path d="M12 14L16 18L22 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <path d="M8 4H24C26.2 4 28 5.8 28 8V24C28 26.2 26.2 28 24 28H8C5.8 28 4 26.2 4 24V8C4 5.8 5.8 4 8 4Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 14L16 18L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Conformité légale</h3>
                     <p class="service-description">Mentions légales, politique de confidentialité, RGPD. Votre site 100% conforme à la législation française.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 4V28M16 4C10 4 6 8 6 14C6 20 10 24 16 24M16 4C22 4 26 8 26 14C26 20 22 24 16 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <path d="M16 4V28M16 4C10 4 6 8 6 14C6 20 10 24 16 24M16 4C22 4 26 8 26 14C26 20 22 24 16 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Support & Maintenance</h3>
                     <p class="service-description">Accompagnement post-lancement, mises à jour et support technique. Je reste disponible pour faire évoluer votre site.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Séparateur doré -->
-    <div class="section-divider">
-        <div class="divider-line">
-            <div class="divider-ornament"></div>
-        </div>
-    </div>
-
-    <!-- Process Section -->
-    <section id="processus" class="process">
+    <!-- Processus -->
+    <section id="processus" class="section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Processus</span>
-                <h2 class="section-title">Mon processus de travail</h2>
-                <p class="section-description">Une méthode éprouvée pour garantir votre satisfaction</p>
-            </div>
+            <header class="section-head reveal">
+                <span class="eyebrow">Processus</span>
+                <h2>Mon processus de travail</h2>
+                <p>Une méthode éprouvée pour garantir votre satisfaction</p>
+            </header>
 
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="process-number">01</div>
+            <div class="process-list">
+
+                <div class="process-step reveal">
+                    <div class="process-num">01</div>
                     <div class="process-content">
                         <h3 class="process-title">Découverte & Brief</h3>
                         <p class="process-description">On discute de votre projet, vos objectifs, votre audience cible. Je pose les bonnes questions pour comprendre votre vision.</p>
                     </div>
                 </div>
 
-                <div class="process-step">
-                    <div class="process-number">02</div>
+                <div class="process-step reveal">
+                    <div class="process-num">02</div>
                     <div class="process-content">
                         <h3 class="process-title">Design & Maquettes</h3>
                         <p class="process-description">Création de maquettes visuelles pour validation. Vous visualisez votre futur site avant même le début du développement.</p>
                     </div>
                 </div>
 
-                <div class="process-step">
-                    <div class="process-number">03</div>
+                <div class="process-step reveal">
+                    <div class="process-num">03</div>
                     <div class="process-content">
                         <h3 class="process-title">Développement</h3>
                         <p class="process-description">Code de qualité professionnelle, optimisé pour la performance et le référencement. Tests sur tous les appareils.</p>
                     </div>
                 </div>
 
-                <div class="process-step">
-                    <div class="process-number">04</div>
+                <div class="process-step reveal">
+                    <div class="process-num">04</div>
                     <div class="process-content">
                         <h3 class="process-title">Livraison & Formation</h3>
-                        <p class="process-description">Mise en ligne de votre site + formation pour que vous puissiez gérer le contenu en autonomie si besoin.</p>
+                        <p class="process-description">Mise en ligne de votre site et formation pour que vous puissiez gérer le contenu en autonomie si besoin.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Séparateur doré -->
-    <div class="section-divider">
-        <div class="divider-line">
-            <div class="divider-ornament"></div>
-        </div>
-    </div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <!-- Background animé Contact -->
-        <div class="contact-bg">
-            <div class="contact-gradient-orb contact-orb-1"></div>
-            <div class="contact-gradient-orb contact-orb-2"></div>
-            <div class="contact-waves">
-                <div class="contact-wave"></div>
-                <div class="contact-wave"></div>
-                <div class="contact-wave"></div>
-            </div>
-            <div class="contact-particles">
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-                <div class="contact-particle"></div>
-            </div>
-        </div>
-        
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
         <div class="container">
             <div class="contact-wrapper">
-                <div class="contact-info">
-                    <span class="section-label">Contact</span>
-                    <h2 class="section-title">Prêt à démarrer<br>votre projet ?</h2>
-                    <p class="contact-description">Discutons de vos besoins et donnons vie à votre présence digitale. Réponse garantie sous 24h.</p>
-                    
+
+                <div class="contact-info reveal">
+                    <span class="eyebrow">Contact</span>
+                    <h2>Prêt à démarrer<br>votre projet ?</h2>
+                    <p class="contact-lead">Discutons de vos besoins et donnons vie à votre présence digitale. Réponse garantie sous 24h.</p>
+
                     <div class="contact-details">
                         <div class="contact-detail">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M3 8L10.89 13.26C11.22 13.48 11.6 13.6 12 13.6C12.4 13.6 12.78 13.48 13.11 13.26L21 8M5 19H19C20.1 19 21 18.1 21 17V7C21 5.9 20.1 5 19 5H5C3.9 5 3 5.9 3 7V17C3 18.1 3.9 19 5 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <div>
                                 <div class="detail-label">Email</div>
-                                <a href="/cdn-cgi/l/email-protection#93f0fcfde7f2f0e7d3f7f6e3f2fdfdf2f4f6e3f0f4f2e1f7bdf5e1" class="detail-value"><span class="__cf_email__" data-cfemail="563539382237352216323326373838373133263531372432783024">[email&#160;protected]</span></a>
+                                <a href="mailto:contact@paulygone.fr" class="detail-value">contact@paulygone.fr</a>
                             </div>
                         </div>
 
                         <div class="contact-detail">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M3 5C3 3.9 3.9 3 5 3H8.28C8.71 3 9.09 3.28 9.23 3.68L10.73 8.18C10.88 8.65 10.67 9.17 10.22 9.39L7.97 10.52C9.07 12.96 11.04 14.93 13.48 16.03L14.61 13.78C14.83 13.33 15.35 13.12 15.82 13.27L20.32 14.77C20.72 14.91 21 15.29 21 15.72V19C21 20.1 20.1 21 19 21H18C9.72 21 3 14.28 3 6V5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <div>
                                 <div class="detail-label">Téléphone</div>
@@ -469,37 +345,34 @@
                         </div>
 
                         <div class="contact-detail">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <div>
-                                <div class="detail-label">Zone</div>
+                                <div class="detail-label">Zone d'intervention</div>
                                 <div class="detail-value">Nîmes + 30km (Gard)</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="contact-social">
-                        <a href="https://depannagepcgard.fr" target="_blank" class="social-link">Site principal</a>
+                        <a href="https://depannagepcgard.fr" target="_blank">Site principal →</a>
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form reveal" id="contactForm">
                     <div class="form-group">
                         <label for="name">Nom complet</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
                     </div>
-
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" placeholder="votre@email.fr" required>
                     </div>
-
                     <div class="form-group">
                         <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" placeholder="06 xx xx xx xx">
                     </div>
-
                     <div class="form-group">
                         <label for="project">Type de projet</label>
                         <select id="project" name="project" required>
@@ -511,259 +384,99 @@
                             <option value="autre">Autre</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label for="message">Parlez-moi de votre projet</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Votre projet</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
                     </div>
-
-                    <button type="submit" class="btn btn-primary btn-full">
-                        Envoyer le message
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <button type="submit" class="btn-submit">
+                        Envoyer
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
                             <path d="M18 2L9 11M18 2L12 18L9 11M18 2L2 8L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-
-                    <p class="form-notice">En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter concernant votre demande.</p>
+                    <p class="form-notice">En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter.</p>
                 </form>
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <img src="logo.png" alt="Logo Paulygone" class="logo-icon">
-                        <div class="logo-text-container">
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Paulygone - Création web à Nîmes. Tous droits réservés.</p>
-            </div>
+        <div class="footer-inner">
+            <p class="footer-copy">&copy; 2026 Paulygone — Création web à Nîmes</p>
+            <nav class="footer-links">
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="cgv.html">CGV</a>
+                <a href="politique-confidentialite.html">Confidentialité</a>
+            </nav>
         </div>
     </footer>
 
-    <!-- JavaScript intégré directement -->
     <script>
-    // Tout le code s'exécute après le chargement du DOM
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('✅ Script chargé !');
-        
-        // Barre de progression de lecture
-        const progressBar = document.getElementById('progressBar');
+    document.addEventListener('DOMContentLoaded', function () {
 
-        if (progressBar) {
-            window.addEventListener('scroll', () => {
-                const windowHeight = window.innerHeight;
-                const documentHeight = document.documentElement.scrollHeight - windowHeight;
-                const scrolled = window.pageYOffset;
-                const progress = (scrolled / documentHeight) * 100;
-                progressBar.style.width = progress + '%';
-            });
-        }
+        // Progress bar
+        const bar = document.getElementById('progressBar');
+        window.addEventListener('scroll', function () {
+            const h = document.documentElement;
+            const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+            bar.style.width = pct + '%';
+        });
 
-        // Navigation mobile toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        // Nav scroll state
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', function () {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
 
-        if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                
-                const spans = navToggle.querySelectorAll('span');
-                if (spans.length >= 3) {
-                    spans[0].style.transform = navLinks.classList.contains('active') 
-                        ? 'rotate(45deg) translateY(8px)' 
-                        : 'none';
-                    spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-                    spans[2].style.transform = navLinks.classList.contains('active') 
-                        ? 'rotate(-45deg) translateY(-8px)' 
-                        : 'none';
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    const spans = navToggle.querySelectorAll('span');
-                    if (spans.length >= 3) {
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-            });
-        }
-
-        // Scroll-based navbar styling
-        const nav = document.querySelector('.nav');
-
-        if (nav) {
-            let lastScroll = 0;
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll > 100) {
-                    nav.style.background = 'linear-gradient(135deg, #1a252f 0%, #2c3e50 100%)';
-                    nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
-                } else {
-                    nav.style.background = 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)';
-                    nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
-                }
-                
-                lastScroll = currentScroll;
-            });
-        }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
+        // Mobile burger
+        const burger = document.getElementById('navBurger');
+        const links  = document.getElementById('navLinks');
+        burger.addEventListener('click', function () {
+            links.classList.toggle('open');
+            const spans = burger.querySelectorAll('span');
+            const open  = links.classList.contains('open');
+            spans[0].style.transform = open ? 'rotate(45deg) translateY(3.5px)' : '';
+            spans[1].style.transform = open ? 'rotate(-45deg) translateY(-3.5px)' : '';
+        });
+        document.querySelectorAll('.nav-links a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                links.classList.remove('open');
+                burger.querySelectorAll('span').forEach(function (s) { s.style.transform = ''; });
             });
         });
 
-        // Animation Canvas Portfolio
-        const canvas = document.getElementById('portfolioCanvas');
-        if (canvas) {
-            try {
-                const ctx = canvas.getContext('2d');
-                let particles = [];
-                
-                function resizeCanvas() {
-                    canvas.width = canvas.offsetWidth;
-                    canvas.height = canvas.offsetHeight;
-                }
-                
-                resizeCanvas();
-                window.addEventListener('resize', resizeCanvas);
-                
-                class Particle {
-                    constructor() {
-                        this.reset();
-                    }
-                    
-                    reset() {
-                        this.x = Math.random() * canvas.width;
-                        this.y = Math.random() * canvas.height;
-                        this.size = Math.random() * 3 + 1;
-                        this.speedX = Math.random() * 0.5 - 0.25;
-                        this.speedY = Math.random() * 0.5 - 0.25;
-                        this.opacity = Math.random() * 0.5 + 0.3;
-                    }
-                    
-                    update() {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-                        
-                        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                            this.reset();
-                        }
-                    }
-                    
-                    draw() {
-                        ctx.fillStyle = `rgba(201, 169, 97, ${this.opacity})`;
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.shadowBlur = 10;
-                        ctx.shadowColor = 'rgba(201, 169, 97, 0.5)';
-                    }
-                }
-                
-                for (let i = 0; i < 80; i++) {
-                    particles.push(new Particle());
-                }
-                
-                function animate() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    particles.forEach(particle => {
-                        particle.update();
-                        particle.draw();
-                    });
-                    requestAnimationFrame(animate);
-                }
-                
-                animate();
-            } catch (error) {
-                console.log('Canvas error:', error);
-            }
-        }
-
-        // FORMULAIRE WEB3FORMS - LA PARTIE IMPORTANTE !
-        const contactForm = document.getElementById('contactForm');
-        console.log('📧 Formulaire trouvé:', contactForm);
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                console.log('🚀 Formulaire soumis !');
-                
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                if (!submitBtn) {
-                    console.error('❌ Bouton submit non trouvé !');
-                    return;
-                }
-                
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Envoi en cours...';
-                submitBtn.disabled = true;
-                
-                const formData = new FormData(contactForm);
-                formData.append('access_key', '1a79de7f-cdea-4b44-bd65-ef53ac8cf7d6');
-                
-                console.log('📤 Envoi à Web3Forms...');
-                
-                try {
-                    const response = await fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    
-                    const data = await response.json();
-                    console.log('📥 Réponse reçue:', data);
-                    
-                    if (data.success) {
-                        submitBtn.textContent = '✅ Message envoyé !';
-                        contactForm.reset();
-                        alert('✅ Votre message a été envoyé avec succès !');
-                        setTimeout(() => {
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        }, 3000);
-                    } else {
-                        throw new Error('Erreur Web3Forms: ' + JSON.stringify(data));
-                    }
-                } catch (error) {
-                    console.error('❌ Erreur:', error);
-                    submitBtn.textContent = '❌ Erreur. Réessayez.';
-                    alert('❌ Erreur lors de l\'envoi. Vérifiez la console.');
-                    setTimeout(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }, 3000);
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
                 }
             });
-            
-            console.log('✅ Event listener ajouté au formulaire !');
-        } else {
-            console.error('❌ Formulaire #contactForm non trouvé !');
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { observer.observe(el); });
+
+        // Contact form
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const btn = form.querySelector('.btn-submit');
+                btn.textContent = 'Message envoyé ✓';
+                btn.style.background = '#4a7c59';
+                setTimeout(function () {
+                    btn.textContent = 'Envoyer';
+                    btn.style.background = '';
+                    form.reset();
+                }, 3000);
+            });
         }
+
     });
     </script>
+
 </body>
 </html>
