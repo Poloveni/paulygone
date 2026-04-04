@@ -133,31 +133,33 @@
     inset: 0;
     overflow: hidden;
     pointer-events: none;
+    z-index: 2;
 }
 
 .particle {
     position: absolute;
+    bottom: -10px;
     width: 8px;
     height: 8px;
-    background: radial-gradient(circle, rgba(201, 169, 97, 0.8), rgba(201, 169, 97, 0.3), transparent);
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.9), rgba(201, 169, 97, 0.4), transparent);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(201, 169, 97, 0.5);
-    animation: float 15s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(201, 169, 97, 0.6);
+    animation: floatUp 15s infinite ease-in-out;
 }
 
-@keyframes float {
+@keyframes floatUp {
     0% {
-        transform: translateY(100vh) translateX(0);
+        transform: translateY(0) translateX(0);
         opacity: 0;
     }
     10% {
-        opacity: 0.8;
+        opacity: 0.9;
     }
     90% {
-        opacity: 0.8;
+        opacity: 0.9;
     }
     100% {
-        transform: translateY(-20px) translateX(50px);
+        transform: translateY(-100vh) translateX(50px);
         opacity: 0;
     }
 }
