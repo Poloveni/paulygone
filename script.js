@@ -1,3 +1,68 @@
+// ✨ ANIMATIONS LUXUEUSES ✨
+
+// Animation des compteurs
+const animateCounter = (element, target, suffix = '') => {
+    const duration = 2000;
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target + suffix;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + suffix;
+        }
+    }, 16);
+};
+
+// Observer pour déclencher les animations au scroll
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            const statNumbers = entry.target.querySelectorAll('.stat-number');
+            
+            // Animer le premier chiffre (15+)
+            const firstNum = statNumbers[0];
+            firstNum.childNodes[0].textContent = '0';
+            animateCounter(firstNum.childNodes[0], 15, '');
+            
+            // Animer le deuxième chiffre (100%)
+            const secondNum = statNumbers[1];
+            secondNum.childNodes[0].textContent = '0';
+            animateCounter(secondNum.childNodes[0], 100, '');
+            
+            // Animer le troisième chiffre (30km)
+            const thirdNum = statNumbers[2];
+            thirdNum.childNodes[0].textContent = '0';
+            animateCounter(thirdNum.childNodes[0], 30, '');
+        }
+    });
+}, observerOptions);
+
+// Observer les stats
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) {
+    statsObserver.observe(heroStats);
+}
+
+// Effet parallaxe sur l'image hero
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage && scrolled < window.innerHeight) {
+        heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
 // Barre de progression de lecture
 const progressBar = document.getElementById('progressBar');
 
