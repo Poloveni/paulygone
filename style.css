@@ -1708,7 +1708,6 @@ section {
 }
 
 /* Séparateurs dorés entre sections */
-.hero::after,
 .portfolio::after,
 .services::after,
 .process::after {
@@ -1720,11 +1719,11 @@ section {
     width: 80%;
     max-width: 1200px;
     height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(201, 169, 97, 0.3) 20%, 
-        rgba(201, 169, 97, 0.8) 50%, 
-        rgba(201, 169, 97, 0.3) 80%, 
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(201, 169, 97, 0.3) 20%,
+        rgba(201, 169, 97, 0.8) 50%,
+        rgba(201, 169, 97, 0.3) 80%,
         transparent 100%);
     z-index: 10;
 }
