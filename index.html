@@ -456,22 +456,51 @@
                     observer.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         reveals.forEach(function (el) { observer.observe(el); });
 
-        // Contact form
+        // Contact form — Web3Forms
         const form = document.getElementById('contactForm');
         if (form) {
-            form.addEventListener('submit', function (e) {
+            form.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 const btn = form.querySelector('.btn-submit');
-                btn.textContent = 'Message envoyé ✓';
-                btn.style.background = '#4a7c59';
-                setTimeout(function () {
-                    btn.textContent = 'Envoyer';
-                    btn.style.background = '';
-                    form.reset();
-                }, 3000);
+                const original = btn.innerHTML;
+                btn.textContent = 'Envoi en cours…';
+                btn.disabled = true;
+
+                const formData = new FormData(form);
+                formData.append('access_key', '1a79de7f-cdea-4b44-bd65-ef53ac8cf7d6');
+                formData.append('subject', 'Nouveau contact — Paulygone.fr');
+                formData.append('from_name', 'Paulygone Contact');
+
+                try {
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        btn.textContent = 'Message envoyé ✓';
+                        btn.style.background = '#4a7c59';
+                        form.reset();
+                        setTimeout(function () {
+                            btn.innerHTML = original;
+                            btn.style.background = '';
+                            btn.disabled = false;
+                        }, 4000);
+                    } else {
+                        throw new Error(data.message);
+                    }
+                } catch (err) {
+                    btn.textContent = 'Erreur — réessayez';
+                    btn.style.background = '#8B2020';
+                    setTimeout(function () {
+                        btn.innerHTML = original;
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }, 3000);
+                }
             });
         }
 
