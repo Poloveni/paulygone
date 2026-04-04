@@ -1081,37 +1081,37 @@ section {
 .services-gradient-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
-    animation: floatOrb 20s infinite ease-in-out;
+    filter: blur(100px);
+    opacity: 0.6;
+    animation: floatOrb 15s infinite ease-in-out;
 }
 
 .services-orb-1 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(201, 169, 97, 0.4), transparent);
-    top: -100px;
-    left: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.8), rgba(201, 169, 97, 0.3), transparent);
+    top: -200px;
+    left: -200px;
     animation-delay: 0s;
 }
 
 .services-orb-2 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(201, 169, 97, 0.3), transparent);
-    bottom: -150px;
-    right: -150px;
-    animation-delay: 7s;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.7), rgba(201, 169, 97, 0.2), transparent);
+    bottom: -250px;
+    right: -250px;
+    animation-delay: 5s;
 }
 
 .services-orb-3 {
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(201, 169, 97, 0.35), transparent);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.75), rgba(201, 169, 97, 0.25), transparent);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation-delay: 14s;
+    animation-delay: 10s;
 }
 
 @keyframes floatOrb {
@@ -1134,12 +1134,12 @@ section {
 
 .services-particle {
     position: absolute;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, rgba(201, 169, 97, 0.6), transparent);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 1), rgba(201, 169, 97, 0.5), transparent);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(201, 169, 97, 0.4);
-    animation: floatServiceParticle 15s infinite ease-in-out;
+    box-shadow: 0 0 20px rgba(201, 169, 97, 0.8);
+    animation: floatServiceParticle 12s infinite ease-in-out;
 }
 
 @keyframes floatServiceParticle {
@@ -1147,11 +1147,11 @@ section {
         transform: translateY(0) translateX(0);
         opacity: 0;
     }
-    10% {
-        opacity: 0.8;
+    5% {
+        opacity: 1;
     }
-    90% {
-        opacity: 0.8;
+    95% {
+        opacity: 1;
     }
     100% {
         transform: translateY(-100vh) translateX(100px);
@@ -1159,16 +1159,16 @@ section {
     }
 }
 
-.services-particle:nth-child(1) { left: 10%; bottom: -10px; animation-delay: 0s; animation-duration: 12s; }
-.services-particle:nth-child(2) { left: 25%; bottom: -10px; animation-delay: 3s; animation-duration: 15s; }
-.services-particle:nth-child(3) { left: 40%; bottom: -10px; animation-delay: 1.5s; animation-duration: 13s; }
-.services-particle:nth-child(4) { left: 55%; bottom: -10px; animation-delay: 4.5s; animation-duration: 14s; }
-.services-particle:nth-child(5) { left: 70%; bottom: -10px; animation-delay: 2s; animation-duration: 12s; }
-.services-particle:nth-child(6) { left: 85%; bottom: -10px; animation-delay: 5s; animation-duration: 15s; }
-.services-particle:nth-child(7) { left: 15%; bottom: -10px; animation-delay: 2.5s; animation-duration: 13s; }
-.services-particle:nth-child(8) { left: 35%; bottom: -10px; animation-delay: 4s; animation-duration: 14s; }
-.services-particle:nth-child(9) { left: 60%; bottom: -10px; animation-delay: 1s; animation-duration: 12s; }
-.services-particle:nth-child(10) { left: 80%; bottom: -10px; animation-delay: 3.5s; animation-duration: 15s; }
+.services-particle:nth-child(1) { left: 10%; bottom: -10px; animation-delay: 0s; animation-duration: 10s; }
+.services-particle:nth-child(2) { left: 25%; bottom: -10px; animation-delay: 2s; animation-duration: 11s; }
+.services-particle:nth-child(3) { left: 40%; bottom: -10px; animation-delay: 1s; animation-duration: 9s; }
+.services-particle:nth-child(4) { left: 55%; bottom: -10px; animation-delay: 3s; animation-duration: 10s; }
+.services-particle:nth-child(5) { left: 70%; bottom: -10px; animation-delay: 1.5s; animation-duration: 11s; }
+.services-particle:nth-child(6) { left: 85%; bottom: -10px; animation-delay: 2.5s; animation-duration: 9s; }
+.services-particle:nth-child(7) { left: 15%; bottom: -10px; animation-delay: 0.5s; animation-duration: 10s; }
+.services-particle:nth-child(8) { left: 35%; bottom: -10px; animation-delay: 3.5s; animation-duration: 11s; }
+.services-particle:nth-child(9) { left: 60%; bottom: -10px; animation-delay: 0.8s; animation-duration: 9s; }
+.services-particle:nth-child(10) { left: 80%; bottom: -10px; animation-delay: 2.8s; animation-duration: 10s; }
 
 .services .container {
     position: relative;
