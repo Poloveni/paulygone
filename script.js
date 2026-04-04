@@ -1,68 +1,3 @@
-// ✨ ANIMATIONS LUXUEUSES ✨
-
-// Animation des compteurs
-const animateCounter = (element, target, suffix = '') => {
-    const duration = 2000;
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = 0;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target + suffix;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current) + suffix;
-        }
-    }, 16);
-};
-
-// Observer pour déclencher les animations au scroll
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
-
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-            entry.target.classList.add('animated');
-            const statNumbers = entry.target.querySelectorAll('.stat-number');
-            
-            // Animer le premier chiffre (15+)
-            const firstNum = statNumbers[0];
-            firstNum.childNodes[0].textContent = '0';
-            animateCounter(firstNum.childNodes[0], 15, '');
-            
-            // Animer le deuxième chiffre (100%)
-            const secondNum = statNumbers[1];
-            secondNum.childNodes[0].textContent = '0';
-            animateCounter(secondNum.childNodes[0], 100, '');
-            
-            // Animer le troisième chiffre (30km)
-            const thirdNum = statNumbers[2];
-            thirdNum.childNodes[0].textContent = '0';
-            animateCounter(thirdNum.childNodes[0], 30, '');
-        }
-    });
-}, observerOptions);
-
-// Observer les stats
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-    statsObserver.observe(heroStats);
-}
-
-// Effet parallaxe sur l'image hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroImage = document.querySelector('.hero-image');
-    if (heroImage && scrolled < window.innerHeight) {
-        heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
 // Barre de progression de lecture
 const progressBar = document.getElementById('progressBar');
 
@@ -126,7 +61,42 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Simple AOS (Animate On Scroll) implementation
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
+
+// Form submission
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Add your form submission logic here
+        console.log('Form data:', data);
+        
+        // Show success message
+        alert('Merci ! Votre message a été envoyé. Je vous répondrai dans les 24h.');
+        contactForm.reset();
+    });
+}
+
+// Animation on scroll observer
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -135,164 +105,16 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('aos-animate');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('[data-aos]').forEach((element) => {
-    observer.observe(element);
+// Observe elements with data-aos attribute
+document.querySelectorAll('[data-aos]').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
 });
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Contact form handling with Web3Forms
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        
-        // Disable button and show loading state
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = `
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="animation: spin 1s linear infinite;">
-                <path d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            Envoi en cours...
-        `;
-        
-        try {
-            const formData = new FormData(contactForm);
-            
-            // Add Web3Forms access key - TODO: Replace with actual key
-            formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY_HERE');
-            
-            // Add additional data
-            formData.append('subject', 'Nouveau message depuis le site Web Creation - Paulygone');
-            formData.append('from_name', 'Site Web Creation - Paulygone');
-            
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                // Success message
-                submitBtn.innerHTML = `
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M16 6L8 14L4 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Message envoyé !
-                `;
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                }, 3000);
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            
-            // Error message
-            submitBtn.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 6V10M10 14H10.01M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Erreur - Réessayez
-            `;
-            submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
-            
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-            }, 3000);
-        }
-    });
-}
-
-// Add spinning animation for loading state
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-`;
-document.head.appendChild(style);
-
-// Parallax effect for hero orbs
-window.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth - 0.5;
-    const mouseY = e.clientY / window.innerHeight - 0.5;
-    
-    const orbs = document.querySelectorAll('.gradient-orb');
-    orbs.forEach((orb, index) => {
-        const speed = (index + 1) * 20;
-        orb.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
-    });
-});
-
-// Counter animation for stats
-const animateCounter = (element, target, duration = 2000) => {
-    let current = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 16);
-};
-
-// Trigger counter animation when stats are visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-            entry.target.classList.add('counted');
-            const target = parseInt(entry.target.textContent);
-            if (!isNaN(target)) {
-                animateCounter(entry.target, target);
-            }
-        }
-    });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat-number').forEach(stat => {
-    statsObserver.observe(stat);
-});
-
-console.log('🚀 Paulygone - Web Creation site loaded');
-console.log('📧 Contact: contact@depannagepcgard.fr');
-console.log('📱 Tel: 06 37 12 76 88');
