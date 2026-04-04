@@ -1995,3 +1995,52 @@ section {
     position: relative;
     z-index: 1;
 }
+
+/* Vidéo background Portfolio */
+.portfolio {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.portfolio-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.4;
+    filter: hue-rotate(20deg) saturate(1.2);
+}
+
+.portfolio-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(250, 250, 248, 0.7) 0%, 
+        rgba(250, 250, 248, 0.5) 50%, 
+        rgba(250, 250, 248, 0.7) 100%);
+    backdrop-filter: blur(2px);
+}
+
+.portfolio .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive vidéo */
+@media (max-width: 768px) {
+    .portfolio-video {
+        opacity: 0.3;
+    }
+}
