@@ -1996,11 +1996,6 @@ section {
     z-index: 1;
 }
 
-/* Vidéo background Portfolio */
-.portfolio {
-    position: relative;
-    overflow: hidden;
-}
 
 .portfolio-video-bg {
     position: absolute;
@@ -2043,4 +2038,40 @@ section {
     .portfolio-video {
         opacity: 0.3;
     }
+}
+
+/* Canvas Portfolio (remplace vidéo) */
+.portfolio {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.portfolio-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.portfolio-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(250, 250, 248, 0.6) 0%, 
+        rgba(250, 250, 248, 0.4) 50%, 
+        rgba(250, 250, 248, 0.6) 100%);
+}
+
+.portfolio .container {
+    position: relative;
+    z-index: 1;
 }
