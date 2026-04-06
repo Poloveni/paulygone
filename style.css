@@ -68,9 +68,6 @@
 [data-theme="light"] .nav-links a.nav-active:not(.nav-contact) {
   color: rgba(240, 234, 224, 0.95);
 }
-[data-theme="light"] .nav-contact {
-  color: #C9A96E !important;
-}
 
 /* Logo — ne pas inverser en clair */
 [data-theme="light"] .logo-img {
@@ -209,14 +206,13 @@ button { cursor: pointer; font-family: inherit; }
 .nav-contact {
   padding: 10px 24px;
   border: none;
-  color: var(--gold) !important;
+  color: inherit !important;
   letter-spacing: 0.1em;
   transition: background var(--transition), border-color var(--transition) !important;
 }
 
 .nav-contact:hover {
-  background: var(--gold-dim);
-  border-color: var(--gold) !important;
+  color: var(--text) !important;
 }
 
 .nav-burger {
