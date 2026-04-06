@@ -56,26 +56,7 @@
   box-shadow: none;
 }
 
-/* Texte nav toujours clair (fond nav toujours sombre) */
-[data-theme="light"] .logo-name,
-[data-theme="light"] .logo-sub {
-  color: rgba(240, 234, 224, 0.85);
-}
-[data-theme="light"] .nav-links a:not(.nav-contact) {
-  color: rgba(240, 234, 224, 0.55);
-}
-[data-theme="light"] .nav-links a:not(.nav-contact):hover,
-[data-theme="light"] .nav-links a.nav-active:not(.nav-contact) {
-  color: rgba(240, 234, 224, 0.95);
-}
-
-/* Logo — ne pas inverser en clair */
-[data-theme="light"] .logo-img {
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-/* Mobile nav menu — light */
+/* Mobile nav menu — reste sombre dans les deux thèmes */
 [data-theme="light"] .nav-links {
   background: rgba(12, 10, 8, 0.97);
 }
@@ -173,7 +154,7 @@ button { cursor: pointer; font-family: inherit; }
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--text);
+  color: rgba(240, 234, 224, 0.90);
   line-height: 1.1;
 }
 
@@ -189,31 +170,32 @@ button { cursor: pointer; font-family: inherit; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 36px;
 }
 
 .nav-links a {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color var(--transition);
+  color: rgba(240, 234, 224, 0.38);
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-.nav-links a:hover { color: var(--text); }
-
-.nav-contact {
-  padding: 10px 24px;
-  border: none;
-  color: inherit !important;
-  letter-spacing: 0.1em;
-  transition: background var(--transition), border-color var(--transition) !important;
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.35s ease;
 }
 
-.nav-contact:hover {
-  color: var(--text) !important;
+.nav-links a:hover {
+  color: rgba(240, 234, 224, 0.88);
 }
+.nav-links a:hover::after { width: 100%; }
 
 .nav-burger {
   display: none;
@@ -226,9 +208,9 @@ button { cursor: pointer; font-family: inherit; }
 
 .nav-burger span {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 1px;
-  background: var(--text);
+  background: rgba(240, 234, 224, 0.7);
   transition: var(--transition);
 }
 
@@ -1179,20 +1161,6 @@ a.detail-value:hover { color: var(--gold); }
   color: var(--gold-light);
 }
 
-/* ────────────────── NAV LINKS — UNDERLINE SLIDE ────────────────── */
-.nav-links a:not(.nav-contact) {
-  position: relative;
-}
-.nav-links a:not(.nav-contact)::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width 0.3s ease;
-}
-.nav-links a:not(.nav-contact):hover::after { width: 100%; }
-
 /* ────────────────── PAGE TRANSITION OVERLAY ────────────────── */
 #page-transition {
   position: fixed;
@@ -1253,13 +1221,12 @@ a.detail-value:hover { color: var(--gold); }
 .portfolio-item-link.reveal:nth-child(4) { transition-delay: 0.30s; }
 
 /* ────────────────── NAV — ACTIVE SECTION LINK ────────────────── */
-.nav-links a.nav-active:not(.nav-contact) {
-  color: var(--text);
+.nav-links a.nav-active {
+  color: rgba(240, 234, 224, 0.80);
 }
-.nav-links a.nav-active:not(.nav-contact)::after {
+.nav-links a.nav-active::after {
   width: 100%;
-  background: var(--gold);
-  opacity: 0.7;
+  opacity: 0.55;
 }
 
 /* ────────────────── HERO IMG — PARALLAX READY ────────────────── */
