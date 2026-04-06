@@ -162,8 +162,8 @@ button { cursor: pointer; font-family: inherit; }
 .logo-img { display: none; }
 
 .logo-poly {
-  width: 32px;
-  height: 32px;
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
 }
 
