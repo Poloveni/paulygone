@@ -669,12 +669,15 @@ button { cursor: pointer; font-family: inherit; }
 
 .about-photo-col {
   position: relative;
+  padding-bottom: 14px;
+  padding-right: 14px;
 }
 
 .about-photo-frame {
   position: relative;
   border-radius: 2px;
   overflow: hidden;
+  z-index: 1;
 }
 
 .about-photo {
@@ -694,16 +697,19 @@ button { cursor: pointer; font-family: inherit; }
 /* Cadre décoratif décalé */
 .about-photo-deco {
   position: absolute;
-  inset: -12px -12px 12px 12px;
-  border: 1px solid rgba(201, 169, 110, 0.25);
+  top: 14px;
+  left: 14px;
+  right: -14px;
+  bottom: -14px;
+  border: 1px solid rgba(201, 169, 110, 0.30);
   border-radius: 2px;
   pointer-events: none;
-  z-index: -1;
-  transition: border-color 0.3s ease;
+  z-index: 0;
+  transition: border-color 0.4s ease;
 }
 
-.about-photo-frame:hover .about-photo-deco {
-  border-color: rgba(201, 169, 110, 0.5);
+.about-photo-col:hover .about-photo-deco {
+  border-color: rgba(201, 169, 110, 0.6);
 }
 
 .about-content {
