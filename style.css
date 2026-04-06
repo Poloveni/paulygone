@@ -156,10 +156,22 @@ button { cursor: pointer; font-family: inherit; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
+  text-decoration: none;
 }
 
-.logo-img { display: none; }
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(201,169,110,0.20));
+  transition: filter 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  filter: drop-shadow(0 0 14px rgba(201,169,110,0.45));
+}
 
 .logo-poly {
   width: 46px;
