@@ -42,6 +42,14 @@
   --border-h:    rgba(154, 110, 42, 0.44);
 }
 
+/* Hero — forcer texte clair en mode jour (image sombre dans les deux thèmes) */
+[data-theme="light"] .hero-title       { color: #F0EAE0; }
+[data-theme="light"] .hero-title em    { color: #DEC48A; }
+[data-theme="light"] .hero-sub         { color: rgba(240, 234, 224, 0.72); }
+[data-theme="light"] .hero-eyebrow     { color: #C9A96E; }
+[data-theme="light"] .btn-ghost        { border-color: rgba(240,234,224,0.45); color: #F0EAE0; }
+[data-theme="light"] .btn-ghost:hover  { background: rgba(240,234,224,0.10); }
+
 /* Nav scrolled — light */
 [data-theme="light"] .nav.scrolled {
   background: rgba(248, 244, 238, 0.96);
@@ -1266,13 +1274,7 @@ a.detail-value:hover { color: var(--gold); }
   transform: rotate(22deg) scale(1.1);
 }
 
-/* Dark mode → show sun (click to go light) */
-.theme-toggle .icon-moon { display: none; }
-.theme-toggle .icon-sun  { display: block; }
-
-/* Light mode → show moon (click to go dark) */
-[data-theme="light"] .theme-toggle .icon-moon { display: block; }
-[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
+/* L'icône est injectée et gérée entièrement par JS */
 
 /* ────────────────── REDUCED MOTION ────────────────── */
 @media (prefers-reduced-motion: reduce) {
