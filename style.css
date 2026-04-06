@@ -21,7 +21,7 @@
   --max-w:       1200px;
   --pad:         clamp(24px, 5vw, 80px);
   --section-py:  clamp(80px, 10vw, 140px);
-  --nav-h:       72px;
+  --nav-h:       96px;
   --radius:      4px;
   --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -161,7 +161,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .logo-img {
-  height: 64px;
+  height: 90px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
