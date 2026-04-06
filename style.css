@@ -161,10 +161,11 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .logo-img {
-  height: 48px;
+  height: 64px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
+  margin-left: -8px;
   filter: drop-shadow(0 0 8px rgba(201,169,110,0.20));
   transition: filter 0.3s ease;
 }
