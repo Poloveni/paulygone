@@ -14,6 +14,21 @@
 </head>
 <body>
 
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-rings">
+            <div class="loader-ring loader-ring-outer"></div>
+            <div class="loader-ring loader-ring-inner"></div>
+            <svg class="loader-poly-svg" viewBox="0 0 40 40" fill="none">
+                <polygon id="loaderPolyEl" stroke="#C9A96E" stroke-width="1.5" fill="rgba(201,169,110,0.08)" stroke-linejoin="round" points=""/>
+            </svg>
+        </div>
+        <div class="loader-bottom">
+            <p class="loader-label">Chargement</p>
+            <div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
+        </div>
+    </div>
+
     <!-- Page transition overlay -->
     <div id="page-transition"></div>
 
@@ -410,6 +425,52 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
+
+        // ── Loader
+        (function() {
+            var loader  = document.getElementById('loader');
+            var barFill = document.getElementById('loaderBarFill');
+            if (!loader) return;
+
+            // Polygone du loader (morphing plus rapide)
+            var lp = document.getElementById('loaderPolyEl');
+            if (lp) {
+                var cx=20,cy=20,r=15;
+                function lrPts(n){var p=[];for(var i=0;i<n;i++){var a=-Math.PI/2+2*Math.PI*i/n;p.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}return p;}
+                function lNorm(pts,N){var seg=pts.length,lens=[],total=0;for(var i=0;i<seg;i++){var a=pts[i],b=pts[(i+1)%seg],d=Math.sqrt(Math.pow(b[0]-a[0],2)+Math.pow(b[1]-a[1],2));lens.push(d);total+=d;}var res=[];for(var j=0;j<N;j++){var tgt=(j/N)*total,cum=0;for(var k=0;k<seg;k++){if(cum+lens[k]>=tgt-1e-9){var t=lens[k]<1e-9?0:(tgt-cum)/lens[k],aa=pts[k],bb=pts[(k+1)%seg];res.push([aa[0]+t*(bb[0]-aa[0]),aa[1]+t*(bb[1]-aa[1])]);break;}cum+=lens[k];}}return res;}
+                var LN=12,lShapes=[lNorm(lrPts(3),LN),lNorm(lrPts(4),LN),lNorm(lrPts(5),LN),lNorm(lrPts(6),LN),lNorm(lrPts(3),LN)];
+                var lCur=0,lFrm=0,lMorphing=false,lDone=false;
+                function lEase(t){return t<.5?2*t*t:-1+(4-2*t)*t;}
+                function lLerp(a,b,t){return a+(b-a)*t;}
+                function lSet(pts){lp.setAttribute('points',pts.map(function(p){return(Math.round(p[0]*10)/10)+','+(Math.round(p[1]*10)/10);}).join(' '));}
+                function lTick(){lFrm++;if(!lMorphing){if(lFrm>=65){lFrm=0;lMorphing=true;}}else{var t=lEase(Math.min(lFrm/55,1)),fr=lShapes[lCur],to=lShapes[(lCur+1)%lShapes.length];lSet(fr.map(function(p,i){return[lLerp(p[0],to[i][0],t),lLerp(p[1],to[i][1],t)];}));if(lFrm>=55){lCur=(lCur+1)%lShapes.length;lFrm=0;lMorphing=false;lSet(lShapes[lCur]);}}if(!lDone)requestAnimationFrame(lTick);}
+                lSet(lShapes[0]);
+                requestAnimationFrame(lTick);
+            }
+
+            // Barre de progression
+            var prog = 0, startTime = Date.now(), dismissed = false;
+            function advBar() {
+                if (prog < 82) { prog = Math.min(prog + 1.4, 82); if(barFill) barFill.style.width = prog+'%'; setTimeout(advBar, 18); }
+            }
+            advBar();
+
+            function dismiss() {
+                if (dismissed) return;
+                dismissed = true;
+                var wait = Math.max(0, 1400 - (Date.now() - startTime));
+                setTimeout(function() {
+                    if(barFill){ barFill.style.transition='width 0.35s linear'; barFill.style.width='100%'; }
+                    setTimeout(function() {
+                        loader.classList.add('loader-done');
+                        setTimeout(function(){ loader.style.display='none'; }, 850);
+                    }, 380);
+                }, wait);
+            }
+
+            window.addEventListener('load', dismiss);
+            setTimeout(dismiss, 5000); // fallback max 5s
+        })();
 
         // Progress bar
         // ── Progress bar

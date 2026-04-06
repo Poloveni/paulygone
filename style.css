@@ -1180,6 +1180,104 @@ a.detail-value:hover { color: var(--gold); }
   color: var(--gold-light);
 }
 
+/* ────────────────── LOADER ────────────────── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0A0A0A;
+  z-index: 1000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#loader.loader-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-rings {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.20);
+  animation: loaderPulse 3s ease-in-out infinite;
+}
+
+.loader-ring-outer {
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+}
+
+.loader-ring-inner {
+  width: 116px;
+  height: 116px;
+  border-color: rgba(201, 169, 110, 0.38);
+  border-width: 1.5px;
+  animation-delay: 0.4s;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.05); opacity: 0.6; }
+}
+
+.loader-poly-svg {
+  width: 58px;
+  height: 58px;
+  position: relative;
+  z-index: 1;
+}
+
+.loader-bottom {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.loader-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(240, 234, 224, 0.35);
+}
+
+.loader-bar {
+  width: 100px;
+  height: 1px;
+  background: rgba(201, 169, 110, 0.15);
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 200% 100%;
+  animation: loaderShine 1.5s linear infinite;
+  transition: width 0.12s linear;
+}
+
+@keyframes loaderShine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* ────────────────── PAGE TRANSITION OVERLAY ────────────────── */
 #page-transition {
   position: fixed;
