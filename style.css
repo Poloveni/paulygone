@@ -50,21 +50,41 @@
 [data-theme="light"] .btn-ghost        { border-color: rgba(240,234,224,0.45); color: #F0EAE0; }
 [data-theme="light"] .btn-ghost:hover  { background: rgba(240,234,224,0.10); }
 
-/* Nav scrolled — light */
+/* Nav — reste sombre dans les deux thèmes (toujours sur le hero noir) */
 [data-theme="light"] .nav.scrolled {
-  background: rgba(248, 244, 238, 0.96);
-  box-shadow: 0 1px 0 rgba(154, 110, 42, 0.12);
+  background: rgba(12, 10, 8, 0.92);
+  box-shadow: none;
+}
+
+/* Texte nav toujours clair (fond nav toujours sombre) */
+[data-theme="light"] .logo-name,
+[data-theme="light"] .logo-sub {
+  color: rgba(240, 234, 224, 0.85);
+}
+[data-theme="light"] .nav-links a:not(.nav-contact) {
+  color: rgba(240, 234, 224, 0.55);
+}
+[data-theme="light"] .nav-links a:not(.nav-contact):hover,
+[data-theme="light"] .nav-links a.nav-active:not(.nav-contact) {
+  color: rgba(240, 234, 224, 0.95);
+}
+[data-theme="light"] .nav-contact {
+  border-color: rgba(201, 169, 110, 0.4) !important;
+  color: rgba(240, 234, 224, 0.7) !important;
+}
+[data-theme="light"] .nav-contact:hover {
+  color: #C9A96E !important;
 }
 
 /* Logo — ne pas inverser en clair */
 [data-theme="light"] .logo-img {
-  filter: brightness(0);
-  opacity: 0.85;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 /* Mobile nav menu — light */
 [data-theme="light"] .nav-links {
-  background: rgba(248, 244, 238, 0.98);
+  background: rgba(12, 10, 8, 0.97);
 }
 
 /* Select arrow — light */
