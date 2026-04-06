@@ -26,6 +26,54 @@
   --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ────────────────── LIGHT THEME ────────────────── */
+[data-theme="light"] {
+  --bg:          #F8F4EE;
+  --bg-soft:     #EEE8DE;
+  --bg-card:     #FFFFFF;
+  --bg-card-h:   #FAF7F2;
+  --gold:        #9A6E2A;
+  --gold-light:  #B88840;
+  --gold-dim:    rgba(154, 110, 42, 0.10);
+  --text:        #1A1610;
+  --text-muted:  #5C5040;
+  --text-subtle: #8A7D6E;
+  --border:      rgba(154, 110, 42, 0.14);
+  --border-h:    rgba(154, 110, 42, 0.44);
+}
+
+/* Nav scrolled — light */
+[data-theme="light"] .nav.scrolled {
+  background: rgba(248, 244, 238, 0.96);
+  box-shadow: 0 1px 0 rgba(154, 110, 42, 0.12);
+}
+
+/* Logo — ne pas inverser en clair */
+[data-theme="light"] .logo-img {
+  filter: brightness(0);
+  opacity: 0.85;
+}
+
+/* Mobile nav menu — light */
+[data-theme="light"] .nav-links {
+  background: rgba(248, 244, 238, 0.98);
+}
+
+/* Select arrow — light */
+[data-theme="light"] .form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C5040' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Smooth theme switching on key elements */
+:root, body, .nav, .nav.scrolled,
+.section, .section-alt, .service-card, .process-step,
+.portfolio-item, .contact-wrapper, .footer,
+.form-group input, .form-group select, .form-group textarea {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
 /* ────────────────── RESET & BASE ────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1196,6 +1244,35 @@ a.detail-value:hover { color: var(--gold); }
 .hero-media {
   will-change: transform;
 }
+
+/* ────────────────── THEME TOGGLE BUTTON ────────────────── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-h);
+  color: var(--text-muted);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.3s, color 0.3s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: rotate(22deg) scale(1.1);
+}
+
+/* Dark mode → show sun (click to go light) */
+.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun  { display: block; }
+
+/* Light mode → show moon (click to go dark) */
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
 
 /* ────────────────── REDUCED MOTION ────────────────── */
 @media (prefers-reduced-motion: reduce) {
