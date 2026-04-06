@@ -733,29 +733,34 @@
             resize();
             window.addEventListener('resize', resize);
 
-            var GOLD = '201,169,110';
-            var COUNT = 14;
+            // Couleur selon le thème courant
+            function getColor() {
+                var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                return isLight ? '154,110,42' : '201,169,110';
+            }
+
+            var COUNT = 18;
             var polys = [];
 
             function makePoly() {
-                var sides = Math.floor(Math.random() * 4) + 3; // 3 à 6 côtés
-                var r     = 18 + Math.random() * 42;
+                var sides = Math.floor(Math.random() * 4) + 3;
+                var r     = 22 + Math.random() * 55;
                 return {
                     x:     Math.random() * canvas.width,
                     y:     Math.random() * canvas.height,
                     r:     r,
                     sides: sides,
                     rot:   Math.random() * Math.PI * 2,
-                    vx:    (Math.random() - 0.5) * 0.25,
-                    vy:    (Math.random() - 0.5) * 0.25,
-                    vrot:  (Math.random() - 0.5) * 0.003,
-                    alpha: 0.04 + Math.random() * 0.12,
+                    vx:    (Math.random() - 0.5) * 0.28,
+                    vy:    (Math.random() - 0.5) * 0.28,
+                    vrot:  (Math.random() - 0.5) * 0.004,
+                    alpha: 0.18 + Math.random() * 0.22,
                 };
             }
 
             for (var i = 0; i < COUNT; i++) polys.push(makePoly());
 
-            function drawPoly(p) {
+            function drawPoly(p, color) {
                 ctx.save();
                 ctx.translate(p.x, p.y);
                 ctx.rotate(p.rot);
@@ -768,25 +773,25 @@
                     else ctx.lineTo(x, y);
                 }
                 ctx.closePath();
-                ctx.strokeStyle = 'rgba(' + GOLD + ',' + p.alpha + ')';
-                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(' + color + ',' + p.alpha + ')';
+                ctx.lineWidth = 1.2;
                 ctx.stroke();
                 ctx.restore();
             }
 
             function tick() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                var color = getColor();
                 polys.forEach(function(p) {
                     p.x   += p.vx;
                     p.y   += p.vy;
                     p.rot += p.vrot;
-                    // Reboucle discrètement hors champ
                     var pad = p.r + 10;
-                    if (p.x < -pad)             p.x = canvas.width  + pad;
-                    if (p.x > canvas.width+pad)  p.x = -pad;
-                    if (p.y < -pad)             p.y = canvas.height + pad;
-                    if (p.y > canvas.height+pad) p.y = -pad;
-                    drawPoly(p);
+                    if (p.x < -pad)              p.x = canvas.width  + pad;
+                    if (p.x > canvas.width + pad) p.x = -pad;
+                    if (p.y < -pad)              p.y = canvas.height + pad;
+                    if (p.y > canvas.height+ pad) p.y = -pad;
+                    drawPoly(p, color);
                 });
                 requestAnimationFrame(tick);
             }
