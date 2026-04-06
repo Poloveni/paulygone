@@ -50,10 +50,33 @@
 [data-theme="light"] .btn-ghost        { border-color: rgba(240,234,224,0.45); color: #F0EAE0; }
 [data-theme="light"] .btn-ghost:hover  { background: rgba(240,234,224,0.10); }
 
-/* Nav — transparente dans les deux thèmes */
+/* Nav light — fond flouté discret + texte sombre quand scrollé */
 [data-theme="light"] .nav.scrolled {
-  background: transparent;
+  background: rgba(248, 244, 238, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(154, 110, 42, 0.10);
   box-shadow: none;
+}
+[data-theme="light"] .nav.scrolled .nav-links a {
+  color: rgba(26, 22, 16, 0.48);
+}
+[data-theme="light"] .nav.scrolled .nav-links a:hover,
+[data-theme="light"] .nav.scrolled .nav-links a.nav-active {
+  color: rgba(26, 22, 16, 0.88);
+}
+[data-theme="light"] .nav.scrolled .logo-name {
+  color: rgba(26, 22, 16, 0.85);
+}
+[data-theme="light"] .nav.scrolled .logo-sub {
+  color: var(--gold);
+}
+[data-theme="light"] .nav.scrolled .nav-burger span {
+  background: rgba(26, 22, 16, 0.65);
+}
+[data-theme="light"] .nav.scrolled .theme-toggle {
+  color: rgba(26, 22, 16, 0.55);
+  border-color: rgba(26, 22, 16, 0.20);
 }
 
 
