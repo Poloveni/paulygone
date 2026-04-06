@@ -1125,6 +1125,19 @@ a.detail-value:hover { color: var(--gold); }
 }
 .nav-links a:not(.nav-contact):hover::after { width: 100%; }
 
+/* ────────────────── PAGE TRANSITION OVERLAY ────────────────── */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#page-transition.pt-visible { opacity: 1; pointer-events: auto; }
+#page-transition.pt-hidden  { opacity: 0; pointer-events: none; }
+
 /* ────────────────── SECTION NUMBERS — ÉDITORIAL ────────────────── */
 .section-head[data-num] {
   position: relative;

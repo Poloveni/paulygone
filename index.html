@@ -12,6 +12,9 @@
 </head>
 <body>
 
+    <!-- Page transition overlay -->
+    <div id="page-transition"></div>
+
     <!-- Barre de progression -->
     <div class="progress-bar" id="progressBar"></div>
 
@@ -595,6 +598,33 @@
         }
 
     });
+
+    // ── Page transitions
+    (function() {
+        var overlay = document.getElementById('page-transition');
+        if (!overlay) return;
+
+        // Fade in on load
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                overlay.classList.add('pt-hidden');
+            });
+        });
+
+        // Fade out before navigating to internal pages
+        document.addEventListener('click', function(e) {
+            var a = e.target.closest('a[href]');
+            if (!a) return;
+            var href = a.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('http') ||
+                href.startsWith('mailto:') || href.startsWith('tel:') ||
+                a.target === '_blank') return;
+            e.preventDefault();
+            overlay.classList.remove('pt-hidden');
+            overlay.classList.add('pt-visible');
+            setTimeout(function() { window.location.href = href; }, 650);
+        });
+    })();
     </script>
 
 </body>
