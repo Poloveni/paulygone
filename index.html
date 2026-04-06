@@ -24,7 +24,9 @@
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="#" class="logo">
-                <img src="logo.png" alt="Paulygone" class="logo-img">
+                <svg class="logo-poly" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                    <polygon id="logoPolyEl" stroke="#C9A96E" stroke-width="1.5" fill="rgba(201,169,110,0.07)" stroke-linejoin="round" points=""/>
+                </svg>
                 <div>
                     <span class="logo-name">Paulygone</span>
                     <span class="logo-sub">Web Creation</span>
@@ -536,6 +538,89 @@
                 btn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--transition), box-shadow 0.3s';
             });
         });
+
+        // ── Logo polygon morphing
+        (function() {
+            var poly = document.getElementById('logoPolyEl');
+            if (!poly) return;
+            var cx = 20, cy = 20, r = 17;
+
+            // Génère les sommets d'un polygone régulier à n côtés
+            function radPts(n) {
+                var pts = [];
+                for (var i = 0; i < n; i++) {
+                    var a = -Math.PI/2 + 2*Math.PI*i/n;
+                    pts.push([cx + r*Math.cos(a), cy + r*Math.sin(a)]);
+                }
+                return pts;
+            }
+
+            // Distribue N points uniformément sur le périmètre du polygone
+            function normalize(pts, N) {
+                var seg = pts.length, lens = [], total = 0;
+                for (var i = 0; i < seg; i++) {
+                    var a = pts[i], b = pts[(i+1)%seg];
+                    var d = Math.sqrt(Math.pow(b[0]-a[0],2)+Math.pow(b[1]-a[1],2));
+                    lens.push(d); total += d;
+                }
+                var res = [];
+                for (var j = 0; j < N; j++) {
+                    var target = (j/N)*total, cum = 0;
+                    for (var k = 0; k < seg; k++) {
+                        if (cum + lens[k] >= target - 1e-9) {
+                            var t = lens[k] < 1e-9 ? 0 : (target-cum)/lens[k];
+                            var aa = pts[k], bb = pts[(k+1)%seg];
+                            res.push([aa[0]+t*(bb[0]-aa[0]), aa[1]+t*(bb[1]-aa[1])]);
+                            break;
+                        }
+                        cum += lens[k];
+                    }
+                }
+                return res;
+            }
+
+            var N = 12;
+            var shapes = [
+                normalize(radPts(3), N),  // triangle
+                normalize(radPts(4), N),  // carré
+                normalize(radPts(5), N),  // pentagone
+                normalize(radPts(6), N),  // hexagone
+                normalize(radPts(3), N),  // retour triangle (sens miroir pour un cycle fluide)
+            ];
+
+            var cur = 0, frame = 0, morphing = false;
+            var HOLD = 110, MORPH = 85;
+
+            function ease(t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t; }
+            function lerp(a, b, t) { return a+(b-a)*t; }
+
+            function setPoints(pts) {
+                poly.setAttribute('points', pts.map(function(p){
+                    return (Math.round(p[0]*10)/10)+','+(Math.round(p[1]*10)/10);
+                }).join(' '));
+            }
+
+            function tick() {
+                frame++;
+                if (!morphing) {
+                    if (frame >= HOLD) { frame = 0; morphing = true; }
+                } else {
+                    var t = ease(Math.min(frame/MORPH, 1));
+                    var from = shapes[cur], to = shapes[(cur+1)%shapes.length];
+                    setPoints(from.map(function(p,i){
+                        return [lerp(p[0],to[i][0],t), lerp(p[1],to[i][1],t)];
+                    }));
+                    if (frame >= MORPH) {
+                        cur = (cur+1)%shapes.length;
+                        frame = 0; morphing = false;
+                        setPoints(shapes[cur]);
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+            setPoints(shapes[0]);
+            requestAnimationFrame(tick);
+        })();
 
         // ── Theme toggle
         var MOON_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';

@@ -159,12 +159,12 @@ button { cursor: pointer; font-family: inherit; }
   gap: 12px;
 }
 
-.logo-img {
+.logo-img { display: none; }
+
+.logo-poly {
   width: 32px;
   height: 32px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  flex-shrink: 0;
 }
 
 .logo-name {
