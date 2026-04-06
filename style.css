@@ -485,11 +485,87 @@ button { cursor: pointer; font-family: inherit; }
   font-weight: 300;
 }
 
-/* ────────────────── PORTFOLIO ────────────────── */
-.portfolio-grid {
+/* ────────────────── PORTFOLIO — LIVRE ────────────────── */
+.book-portfolio {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  perspective: 1600px;
+  margin-top: 64px;
+}
+
+/* Spine — reliure centrale */
+.book-spine {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(201,169,110,0.5) 15%,
+    rgba(201,169,110,0.5) 85%,
+    transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.book-spine::after {
+  content: '';
+  position: absolute;
+  left: -3px; top: 0; bottom: 0;
+  width: 7px;
+  background: radial-gradient(ellipse at center, rgba(201,169,110,0.10) 0%, transparent 70%);
+}
+
+/* Pages */
+.book-page {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.book-page--left {
+  transform-origin: right center;
+  transform: rotateY(-42deg) translateX(-20px);
+  box-shadow: inset -8px 0 24px rgba(0,0,0,0.35);
+}
+
+.book-page--right {
+  transform-origin: left center;
+  transform: rotateY(42deg) translateX(20px);
+  box-shadow: inset 8px 0 24px rgba(0,0,0,0.35);
+}
+
+.book-page--left.visible {
+  opacity: 1;
+  transform: rotateY(-1deg);
+  box-shadow: inset -4px 0 16px rgba(0,0,0,0.18);
+}
+
+.book-page--right.visible {
+  opacity: 1;
+  transform: rotateY(1deg);
+  box-shadow: inset 4px 0 16px rgba(0,0,0,0.18);
+}
+
+/* Hover — les pages se retournent légèrement vers la reliure */
+.book-page--left.visible:hover {
+  transform: rotateY(-4deg);
+  box-shadow: inset -6px 0 20px rgba(0,0,0,0.25),
+              -4px 0 30px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.book-page--right.visible:hover {
+  transform: rotateY(4deg);
+  box-shadow: inset 6px 0 20px rgba(0,0,0,0.25),
+              4px 0 30px rgba(0,0,0,0.2);
+  z-index: 2;
 }
 
 .portfolio-item-link {
@@ -500,6 +576,7 @@ button { cursor: pointer; font-family: inherit; }
   background: var(--bg-card);
   overflow: hidden;
   transition: var(--transition);
+  height: 100%;
 }
 
 .portfolio-item:hover {
@@ -1235,9 +1312,29 @@ a.detail-value:hover { color: var(--gold); }
 
   .hero-stat:last-child { border-bottom: none; }
 
-  .portfolio-grid {
+  .book-portfolio {
     grid-template-columns: 1fr;
-    gap: 2px;
+    perspective: none;
+  }
+
+  .book-spine { display: none; }
+
+  .book-page--left,
+  .book-page--right {
+    transform: translateY(20px);
+    transform-origin: center;
+  }
+
+  .book-page--left.visible,
+  .book-page--right.visible {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .book-page--left.visible:hover,
+  .book-page--right.visible:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
   }
 
   .services-grid {
