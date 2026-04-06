@@ -59,10 +59,32 @@
         </div>
     </section>
 
+    <!-- Marquee -->
+    <div class="marquee-strip" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Design sur-mesure</span><span class="marquee-sep">·</span>
+            <span>Développement web</span><span class="marquee-sep">·</span>
+            <span>SEO local</span><span class="marquee-sep">·</span>
+            <span>Nîmes</span><span class="marquee-sep">·</span>
+            <span>Gard</span><span class="marquee-sep">·</span>
+            <span>Sites vitrine</span><span class="marquee-sep">·</span>
+            <span>E-commerce</span><span class="marquee-sep">·</span>
+            <span>Performance</span><span class="marquee-sep">·</span>
+            <span>Design sur-mesure</span><span class="marquee-sep">·</span>
+            <span>Développement web</span><span class="marquee-sep">·</span>
+            <span>SEO local</span><span class="marquee-sep">·</span>
+            <span>Nîmes</span><span class="marquee-sep">·</span>
+            <span>Gard</span><span class="marquee-sep">·</span>
+            <span>Sites vitrine</span><span class="marquee-sep">·</span>
+            <span>E-commerce</span><span class="marquee-sep">·</span>
+            <span>Performance</span><span class="marquee-sep">·</span>
+        </div>
+    </div>
+
     <!-- Portfolio -->
     <section id="portfolio" class="section">
         <div class="container">
-            <header class="section-head reveal">
+            <header class="section-head reveal" data-num="01">
                 <span class="eyebrow">Portfolio</span>
                 <h2>Projets récents</h2>
                 <p>Une sélection de sites web conçus et développés avec passion</p>
@@ -177,7 +199,7 @@
     <!-- Services -->
     <section id="services" class="section section-alt">
         <div class="container">
-            <header class="section-head reveal">
+            <header class="section-head reveal" data-num="02">
                 <span class="eyebrow">Services</span>
                 <h2>Une expertise complète</h2>
                 <p>Du design à la mise en ligne, je gère chaque aspect de votre projet web</p>
@@ -256,7 +278,7 @@
     <!-- Processus -->
     <section id="processus" class="section">
         <div class="container">
-            <header class="section-head reveal">
+            <header class="section-head reveal" data-num="03">
                 <span class="eyebrow">Processus</span>
                 <h2>Mon processus de travail</h2>
                 <p>Une méthode éprouvée pour garantir votre satisfaction</p>
@@ -529,6 +551,37 @@
                 btn.style.transform  = '';
                 btn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--transition), box-shadow 0.3s';
             });
+        });
+
+        // ── Hero parallax
+        var heroMedia = document.querySelector('.hero-media');
+        if (heroMedia) {
+            window.addEventListener('scroll', function() {
+                var y = Math.min(window.scrollY, window.innerHeight);
+                heroMedia.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+            }, { passive: true });
+        }
+
+        // ── Active nav section tracking
+        var navLinks = {
+            'portfolio': document.querySelector('.nav-links a[href="#portfolio"]'),
+            'services':  document.querySelector('.nav-links a[href="#services"]'),
+            'processus': document.querySelector('.nav-links a[href="#processus"]'),
+            'contact':   document.querySelector('.nav-links a[href="#contact"]')
+        };
+        var sectionObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var id = entry.target.id;
+                    Object.keys(navLinks).forEach(function(k) {
+                        if (navLinks[k]) navLinks[k].classList.remove('nav-active');
+                    });
+                    if (navLinks[id]) navLinks[id].classList.add('nav-active');
+                }
+            });
+        }, { threshold: 0.35 });
+        document.querySelectorAll('#portfolio, #services, #processus, #contact').forEach(function(s) {
+            sectionObs.observe(s);
         });
 
         // ── Contact form — Web3Forms
