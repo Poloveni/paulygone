@@ -1125,37 +1125,6 @@ a.detail-value:hover { color: var(--gold); }
 }
 .nav-links a:not(.nav-contact):hover::after { width: 100%; }
 
-/* ────────────────── MARQUEE STRIP ────────────────── */
-.marquee-strip {
-  overflow: hidden;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-soft);
-  padding: 13px 0;
-  white-space: nowrap;
-  user-select: none;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  display: inline-block;
-  animation: marquee 32s linear infinite;
-  font-family: var(--font-serif);
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.marquee-track span { padding: 0 22px; }
-.marquee-sep { color: var(--gold) !important; padding: 0 8px !important; opacity: 0.55; }
-.marquee-strip:hover .marquee-track { animation-play-state: paused; }
-
 /* ────────────────── SECTION NUMBERS — ÉDITORIAL ────────────────── */
 .section-head[data-num] {
   position: relative;
@@ -1219,5 +1188,4 @@ a.detail-value:hover { color: var(--gold); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .cursor-dot, .cursor-ring { display: none; }
-  .marquee-track { animation: none; }
 }
