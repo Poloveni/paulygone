@@ -50,9 +50,9 @@
 [data-theme="light"] .btn-ghost        { border-color: rgba(240,234,224,0.45); color: #F0EAE0; }
 [data-theme="light"] .btn-ghost:hover  { background: rgba(240,234,224,0.10); }
 
-/* Nav — reste sombre dans les deux thèmes (toujours sur le hero noir) */
+/* Nav — transparente dans les deux thèmes */
 [data-theme="light"] .nav.scrolled {
-  background: rgba(12, 10, 8, 0.92);
+  background: transparent;
   box-shadow: none;
 }
 
@@ -119,9 +119,9 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .nav.scrolled {
-  background: rgba(10, 10, 10, 0.96);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  background: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
 }
 
 .nav-inner {
