@@ -69,10 +69,6 @@
   color: rgba(240, 234, 224, 0.95);
 }
 [data-theme="light"] .nav-contact {
-  border-color: rgba(201, 169, 110, 0.4) !important;
-  color: rgba(240, 234, 224, 0.7) !important;
-}
-[data-theme="light"] .nav-contact:hover {
   color: #C9A96E !important;
 }
 
@@ -212,8 +208,8 @@ button { cursor: pointer; font-family: inherit; }
 
 .nav-contact {
   padding: 10px 24px;
-  border: 1px solid var(--border-h);
-  color: var(--text-muted) !important;
+  border: none;
+  color: var(--gold) !important;
   letter-spacing: 0.1em;
   transition: background var(--transition), border-color var(--transition) !important;
 }
