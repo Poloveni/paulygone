@@ -745,8 +745,6 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .about-content .section-head--left::before {
-  left: 0;
-  transform: none;
   z-index: 2;
 }
 
