@@ -64,7 +64,11 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-media">
-            <img src="maison-carree-nimes.jpg" alt="Maison Carrée de Nîmes" class="hero-img">
+            <video class="hero-video" autoplay muted loop playsinline poster="maison-carree-nimes.jpg">
+                <source src="videos/hero.mp4" type="video/mp4">
+                <!-- Fallback si la vidéo ne charge pas -->
+                <img src="maison-carree-nimes.jpg" alt="Maison Carrée de Nîmes" class="hero-img">
+            </video>
         </div>
         <div class="hero-noise" aria-hidden="true"></div>
         <div class="hero-inner">
