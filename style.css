@@ -193,7 +193,7 @@ button { cursor: pointer; font-family: inherit; }
 .nav-contact {
   padding: 10px 24px;
   border: 1px solid var(--border-h);
-  color: var(--gold) !important;
+  color: var(--text-muted) !important;
   letter-spacing: 0.1em;
   transition: background var(--transition), border-color var(--transition) !important;
 }
@@ -1242,10 +1242,12 @@ a.detail-value:hover { color: var(--gold); }
 
 /* ────────────────── NAV — ACTIVE SECTION LINK ────────────────── */
 .nav-links a.nav-active:not(.nav-contact) {
-  color: var(--gold);
+  color: var(--text);
 }
 .nav-links a.nav-active:not(.nav-contact)::after {
   width: 100%;
+  background: var(--gold);
+  opacity: 0.7;
 }
 
 /* ────────────────── HERO IMG — PARALLAX READY ────────────────── */
