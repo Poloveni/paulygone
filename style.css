@@ -56,10 +56,6 @@
   box-shadow: none;
 }
 
-/* Mobile nav menu — reste sombre dans les deux thèmes */
-[data-theme="light"] .nav-links {
-  background: rgba(12, 10, 8, 0.97);
-}
 
 /* Select arrow — light */
 [data-theme="light"] .form-group select {
