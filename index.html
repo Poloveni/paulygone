@@ -805,13 +805,6 @@
                         if (p.x < 0 || p.x > W) p.vx *= -1;
                         if (p.y < 0 || p.y > H) p.vy *= -1;
                     }
-                    var dx = p.x - mouse.x, dy = p.y - mouse.y;
-                    var d2 = dx * dx + dy * dy;
-                    if (d2 < MOUSE_DIST * MOUSE_DIST) {
-                        var force = (1 - Math.sqrt(d2) / MOUSE_DIST) * 0.3;
-                        p.vx += dx / Math.sqrt(d2 || 1) * force;
-                        p.vy += dy / Math.sqrt(d2 || 1) * force;
-                    }
                 });
 
                 // Connexions
