@@ -692,7 +692,7 @@
             });
         });
 
-        // ── Hero — constellations de polygones
+        // ── Hero — constellations de polygones + étoiles filantes
         (function() {
             var canvas = document.getElementById('heroCanvas');
             if (!canvas) return;
@@ -720,7 +720,7 @@
             var COUNT        = 90;
             var particles    = [];
 
-            // Groupes polygonaux fixes qui dérivent lentement
+            // Groupes polygonaux
             var POLY_GROUPS = [
                 { sides: 6, cx: 0.18, cy: 0.30, r: 0.09 },
                 { sides: 3, cx: 0.80, cy: 0.20, r: 0.07 },
@@ -732,8 +732,8 @@
                 return {
                     x:  x !== undefined ? x : Math.random() * W,
                     y:  y !== undefined ? y : Math.random() * H,
-                    vx: (Math.random() - 0.5) * 0.22,
-                    vy: (Math.random() - 0.5) * 0.22,
+                    vx: (Math.random() - 0.5) * 0.10,   // ← vitesse réduite
+                    vy: (Math.random() - 0.5) * 0.10,
                     r:  isAnchor ? 1.8 : 1.2 + Math.random() * 1.2,
                     alpha: isAnchor ? 0.75 : 0.25 + Math.random() * 0.45,
                     isAnchor: !!isAnchor,
@@ -741,10 +741,7 @@
                 };
             }
 
-            // Particules libres
             for (var i = 0; i < COUNT; i++) particles.push(makeParticle());
-
-            // Ancres polygonales
             POLY_GROUPS.forEach(function(g) {
                 for (var s = 0; s < g.sides; s++) {
                     var a = -Math.PI / 2 + 2 * Math.PI * s / g.sides;
@@ -753,6 +750,31 @@
                     particles.push(makeParticle(px, py, true));
                 }
             });
+
+            // ── Étoiles filantes
+            var shootingStars = [];
+
+            function spawnShootingStar() {
+                var angle = Math.PI / 6 + Math.random() * Math.PI / 6; // ~30-60°
+                var speed = 6 + Math.random() * 6;
+                shootingStars.push({
+                    x:     Math.random() * W * 0.7,
+                    y:     Math.random() * H * 0.4,
+                    vx:    Math.cos(angle) * speed,
+                    vy:    Math.sin(angle) * speed,
+                    len:   80 + Math.random() * 120,
+                    alpha: 0.0,
+                    phase: 'in',   // 'in' → 'out'
+                    life:  0,
+                    maxLife: 55 + Math.floor(Math.random() * 30),
+                });
+            }
+
+            // Première étoile après 2s, puis toutes les 4-8s
+            setTimeout(spawnShootingStar, 2000);
+            setInterval(function() {
+                if (Math.random() < 0.7) spawnShootingStar();
+            }, 5000);
 
             function drawLine(x1, y1, x2, y2, alpha) {
                 ctx.beginPath();
@@ -765,51 +787,45 @@
 
             function tick() {
                 ctx.clearRect(0, 0, W, H);
-
-                // Fond sombre avec légère teinte chaude
                 ctx.fillStyle = '#0C0A08';
                 ctx.fillRect(0, 0, W, H);
 
-                // Déplacer les particules
+                // Particules
                 particles.forEach(function(p) {
                     if (p.isAnchor) {
-                        // Les ancres reviennent doucement vers leur base
                         p.x += p.vx;
                         p.y += p.vy;
-                        p.vx += (p.baseX - p.x) * 0.0004;
-                        p.vy += (p.baseY - p.y) * 0.0004;
-                        p.vx *= 0.995;
-                        p.vy *= 0.995;
+                        p.vx += (p.baseX - p.x) * 0.0003;
+                        p.vy += (p.baseY - p.y) * 0.0003;
+                        p.vx *= 0.997;
+                        p.vy *= 0.997;
                     } else {
                         p.x += p.vx;
                         p.y += p.vy;
                         if (p.x < 0 || p.x > W) p.vx *= -1;
                         if (p.y < 0 || p.y > H) p.vy *= -1;
                     }
-
-                    // Répulsion douce par la souris
                     var dx = p.x - mouse.x, dy = p.y - mouse.y;
                     var d2 = dx * dx + dy * dy;
                     if (d2 < MOUSE_DIST * MOUSE_DIST) {
-                        var force = (1 - Math.sqrt(d2) / MOUSE_DIST) * 0.4;
+                        var force = (1 - Math.sqrt(d2) / MOUSE_DIST) * 0.3;
                         p.vx += dx / Math.sqrt(d2 || 1) * force;
                         p.vy += dy / Math.sqrt(d2 || 1) * force;
                     }
                 });
 
-                // Connexions entre particules proches
+                // Connexions
                 for (var i = 0; i < particles.length; i++) {
                     for (var j = i + 1; j < particles.length; j++) {
                         var a = particles[i], b = particles[j];
                         var dx = a.x - b.x, dy = a.y - b.y;
                         var dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < CONNECT_DIST) {
-                            var lineAlpha = (1 - dist / CONNECT_DIST) * 0.35;
-                            if (a.isAnchor && b.isAnchor) lineAlpha *= 2.2;
-                            drawLine(a.x, a.y, b.x, b.y, lineAlpha);
+                            var la = (1 - dist / CONNECT_DIST) * 0.35;
+                            if (a.isAnchor && b.isAnchor) la *= 2.2;
+                            drawLine(a.x, a.y, b.x, b.y, la);
                         }
                     }
-                    // Connexion souris
                     var mx = particles[i].x - mouse.x, my = particles[i].y - mouse.y;
                     var md = Math.sqrt(mx * mx + my * my);
                     if (md < MOUSE_DIST) {
@@ -832,6 +848,41 @@
                         ctx.stroke();
                     }
                 });
+
+                // ── Étoiles filantes
+                for (var si = shootingStars.length - 1; si >= 0; si--) {
+                    var s = shootingStars[si];
+                    s.life++;
+                    s.x += s.vx;
+                    s.y += s.vy;
+
+                    // Fade in sur 12 frames, fade out sur les 18 dernières
+                    if (s.life < 12)       s.alpha = s.life / 12;
+                    else if (s.life > s.maxLife - 18) s.alpha = Math.max(0, (s.maxLife - s.life) / 18);
+                    else                   s.alpha = 1;
+
+                    if (s.life >= s.maxLife) { shootingStars.splice(si, 1); continue; }
+
+                    // Traîne dégradée
+                    var tailX = s.x - s.vx / Math.hypot(s.vx, s.vy) * s.len;
+                    var tailY = s.y - s.vy / Math.hypot(s.vx, s.vy) * s.len;
+                    var grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
+                    grad.addColorStop(0,   'rgba(' + GOLD + ',0)');
+                    grad.addColorStop(0.6, 'rgba(' + GOLD + ',' + (s.alpha * 0.25).toFixed(3) + ')');
+                    grad.addColorStop(1,   'rgba(' + GOLD + ',' + (s.alpha * 0.9).toFixed(3) + ')');
+                    ctx.beginPath();
+                    ctx.moveTo(tailX, tailY);
+                    ctx.lineTo(s.x, s.y);
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    // Tête brillante
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, 1.8, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(' + GOLD + ',' + (s.alpha * 0.95).toFixed(3) + ')';
+                    ctx.fill();
+                }
 
                 requestAnimationFrame(tick);
             }
