@@ -699,6 +699,9 @@
             function resize() {
                 W = canvas.width  = canvas.offsetWidth;
                 H = canvas.height = canvas.offsetHeight;
+                isMobile     = W < 768;
+                CONNECT_DIST = isMobile ? 100 : 160;
+                MOUSE_DIST   = isMobile ? 120 : 200;
             }
             resize();
             window.addEventListener('resize', resize);
@@ -712,9 +715,10 @@
             });
 
             var GOLD = [201, 169, 110];
-            var CONNECT_DIST = 160;
-            var MOUSE_DIST   = 200;
-            var COUNT        = 90;
+            var isMobile     = W < 768;
+            var CONNECT_DIST = isMobile ? 100 : 160;
+            var MOUSE_DIST   = isMobile ? 120 : 200;
+            var COUNT        = isMobile ? 35  : 90;
             var particles    = [];
 
             // Groupes polygonaux
