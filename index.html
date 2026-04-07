@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paulygone — Création Web à Nîmes</title>
     <meta name="description" content="Création de sites web modernes et performants à Nîmes. Design créatif, développement sur-mesure, SEO optimisé. Portfolio de projets réalisés dans le Gard.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Paulygone — Création Web à Nîmes">
+    <meta property="og:description" content="Design créatif, développement sur-mesure et SEO. Basé à Nîmes, je transforme vos idées en expériences web mémorables.">
+    <meta property="og:image" content="https://paulygone.fr/logo.png">
+    <meta property="og:url" content="https://paulygone.fr">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paulygone — Création Web à Nîmes">
+    <meta name="twitter:description" content="Design créatif, développement sur-mesure et SEO. Basé à Nîmes.">
+    <meta name="twitter:image" content="https://paulygone.fr/logo.png">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
@@ -409,6 +421,70 @@
                         <li>Délai selon le projet</li>
                     </ul>
                     <a href="#contact" class="btn btn-ghost pricing-btn">Discutons-en</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section-alt">
+        <div class="container">
+            <header class="section-head reveal" data-num="06">
+                <span class="eyebrow">FAQ</span>
+                <h2>Questions fréquentes</h2>
+                <p>Tout ce que vous voulez savoir avant de vous lancer</p>
+            </header>
+            <div class="faq-list">
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Combien de temps faut-il pour créer un site ?</span>
+                        <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Comptez 2 à 3 semaines pour un site Essentiel, 3 à 5 semaines pour un site Pro. Les délais dépendent aussi de la rapidité à laquelle vous me fournissez les contenus (textes, photos). Je vous prépare un planning clair dès le premier échange.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Je n'ai pas de contenu, vous pouvez m'aider ?</span>
+                        <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui, je peux vous aider à rédiger les textes de votre site (copywriting). Pour les photos, je peux utiliser des banques d'images professionnelles gratuites ou vous orienter vers un photographe local si vous souhaitez des visuels personnalisés.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Est-ce que vous assurez la maintenance après la livraison ?</span>
+                        <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>La formule Pro inclut 1 mois de support offert après la mise en ligne. Au-delà, je propose des interventions ponctuelles ou un forfait maintenance mensuel selon vos besoins. Je reste disponible par email et téléphone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Mon site sera-t-il visible sur Google ?</span>
+                        <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tous mes sites sont optimisés pour le SEO dès la construction : balises correctes, vitesse de chargement, responsive, sitemap. La formule Pro inclut une optimisation SEO approfondie. Le référencement naturel prend quelques semaines pour démarrer, c'est normal.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Quels sont les modes de paiement acceptés ?</span>
+                        <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Je travaille avec un acompte de 40 % au démarrage et le solde à la livraison. Je facture par virement bancaire. Pour les projets sur-mesure, un échelonnement peut être envisagé selon le montant.</p>
+                    </div>
                 </div>
 
             </div>
@@ -1158,6 +1234,23 @@
                 heroMedia.style.transform = 'translateY(' + (y * 0.22) + 'px)';
             }, { passive: true });
         }
+
+        // ── FAQ accordéon
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = btn.closest('.faq-item');
+                var isOpen = item.classList.contains('open');
+                // Fermer tous les autres
+                document.querySelectorAll('.faq-item.open').forEach(function(el) {
+                    el.classList.remove('open');
+                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
 
         // ── Active nav section tracking
         var navLinks = {

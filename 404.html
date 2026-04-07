@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable — Paulygone</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
+    <style>
+        .page-404 {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-404 canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .page-404-content {
+            position: relative;
+            z-index: 1;
+        }
+        .page-404-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(120px, 22vw, 220px);
+            font-weight: 300;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(201,169,110,0.35);
+            line-height: 1;
+            margin-bottom: 0;
+            user-select: none;
+        }
+        .page-404-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 300;
+            color: var(--text);
+            margin: 0 0 16px;
+        }
+        .page-404-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 380px;
+        }
+        .page-404-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .page-404-logo {
+            position: absolute;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .page-404-logo img {
+            height: 64px;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-transition"></div>
+
+    <div class="page-404">
+        <canvas id="canvas404" aria-hidden="true"></canvas>
+
+        <a href="/" class="page-404-logo">
+            <img src="logo.png" alt="Paulygone">
+        </a>
+
+        <div class="page-404-content">
+            <p class="page-404-num">404</p>
+            <h1 class="page-404-title">Page introuvable</h1>
+            <p class="page-404-sub">Cette page n'existe pas ou a été déplacée. Revenez à l'accueil pour continuer votre navigation.</p>
+            <div class="page-404-actions">
+                <a href="/" class="btn btn-gold">Retour à l'accueil</a>
+                <a href="/#contact" class="btn btn-ghost">Me contacter</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mini constellation 404
+        (function() {
+            var canvas = document.getElementById('canvas404');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+            var W, H;
+            function resize() {
+                W = canvas.width  = canvas.offsetWidth;
+                H = canvas.height = canvas.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var GOLD = [201,169,110];
+            var pts = [];
+            for (var i = 0; i < 55; i++) {
+                pts.push({
+                    x: Math.random() * (typeof W !== 'undefined' ? W : 800),
+                    y: Math.random() * (typeof H !== 'undefined' ? H : 600),
+                    vx: (Math.random() - 0.5) * 0.12,
+                    vy: (Math.random() - 0.5) * 0.12,
+                    r: 1 + Math.random() * 1.2,
+                    a: 0.2 + Math.random() * 0.5,
+                });
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                ctx.fillStyle = 'var(--bg, #0D0D0D)';
+                ctx.fillRect(0, 0, W, H);
+                pts.forEach(function(p) {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > W) p.vx *= -1;
+                    if (p.y < 0 || p.y > H) p.vy *= -1;
+                });
+                for (var i = 0; i < pts.length; i++) {
+                    for (var j = i+1; j < pts.length; j++) {
+                        var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                        var d = Math.sqrt(dx*dx+dy*dy);
+                        if (d < 130) {
+                            ctx.beginPath();
+                            ctx.moveTo(pts[i].x, pts[i].y);
+                            ctx.lineTo(pts[j].x, pts[j].y);
+                            ctx.strokeStyle = 'rgba('+GOLD+','+(((1-d/130)*0.25)).toFixed(3)+')';
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                    ctx.beginPath();
+                    ctx.arc(pts[i].x, pts[i].y, pts[i].r, 0, Math.PI*2);
+                    ctx.fillStyle = 'rgba('+GOLD+','+pts[i].a+')';
+                    ctx.fill();
+                }
+                requestAnimationFrame(tick);
+            }
+            tick();
+        })();
+
+        // Page transition
+        var pt = document.getElementById('page-transition');
+        document.querySelectorAll('a[href]').forEach(function(a) {
+            if (a.hostname === location.hostname) {
+                a.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var href = a.href;
+                    pt.classList.add('pt-visible');
+                    setTimeout(function() { window.location = href; }, 400);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
