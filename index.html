@@ -62,13 +62,7 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-media">
-            <video class="hero-video" autoplay muted loop playsinline poster="maison-carree-nimes.jpg">
-                <source src="videos/hero.mp4" type="video/mp4">
-                <!-- Fallback si la vidéo ne charge pas -->
-                <img src="maison-carree-nimes.jpg" alt="Maison Carrée de Nîmes" class="hero-img">
-            </video>
-        </div>
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="hero-noise" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-logo fade-up">
@@ -697,6 +691,152 @@
                 btn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--transition), box-shadow 0.3s';
             });
         });
+
+        // ── Hero — constellations de polygones
+        (function() {
+            var canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+            var W, H, mouse = { x: -9999, y: -9999 };
+
+            function resize() {
+                W = canvas.width  = canvas.offsetWidth;
+                H = canvas.height = canvas.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+            canvas.closest('.hero').addEventListener('mousemove', function(e) {
+                var r = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - r.left;
+                mouse.y = e.clientY - r.top;
+            });
+            canvas.closest('.hero').addEventListener('mouseleave', function() {
+                mouse.x = -9999; mouse.y = -9999;
+            });
+
+            var GOLD = [201, 169, 110];
+            var CONNECT_DIST = 160;
+            var MOUSE_DIST   = 200;
+            var COUNT        = 90;
+            var particles    = [];
+
+            // Groupes polygonaux fixes qui dérivent lentement
+            var POLY_GROUPS = [
+                { sides: 6, cx: 0.18, cy: 0.30, r: 0.09 },
+                { sides: 3, cx: 0.80, cy: 0.20, r: 0.07 },
+                { sides: 5, cx: 0.70, cy: 0.72, r: 0.08 },
+                { sides: 4, cx: 0.35, cy: 0.78, r: 0.06 },
+            ];
+
+            function makeParticle(x, y, isAnchor) {
+                return {
+                    x:  x !== undefined ? x : Math.random() * W,
+                    y:  y !== undefined ? y : Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.22,
+                    vy: (Math.random() - 0.5) * 0.22,
+                    r:  isAnchor ? 1.8 : 1.2 + Math.random() * 1.2,
+                    alpha: isAnchor ? 0.75 : 0.25 + Math.random() * 0.45,
+                    isAnchor: !!isAnchor,
+                    baseX: x, baseY: y,
+                };
+            }
+
+            // Particules libres
+            for (var i = 0; i < COUNT; i++) particles.push(makeParticle());
+
+            // Ancres polygonales
+            POLY_GROUPS.forEach(function(g) {
+                for (var s = 0; s < g.sides; s++) {
+                    var a = -Math.PI / 2 + 2 * Math.PI * s / g.sides;
+                    var px = g.cx * W + Math.cos(a) * g.r * W;
+                    var py = g.cy * H + Math.sin(a) * g.r * H;
+                    particles.push(makeParticle(px, py, true));
+                }
+            });
+
+            function drawLine(x1, y1, x2, y2, alpha) {
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.strokeStyle = 'rgba(' + GOLD + ',' + alpha.toFixed(3) + ')';
+                ctx.lineWidth = 0.6;
+                ctx.stroke();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+
+                // Fond sombre avec légère teinte chaude
+                ctx.fillStyle = '#0C0A08';
+                ctx.fillRect(0, 0, W, H);
+
+                // Déplacer les particules
+                particles.forEach(function(p) {
+                    if (p.isAnchor) {
+                        // Les ancres reviennent doucement vers leur base
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vx += (p.baseX - p.x) * 0.0004;
+                        p.vy += (p.baseY - p.y) * 0.0004;
+                        p.vx *= 0.995;
+                        p.vy *= 0.995;
+                    } else {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        if (p.x < 0 || p.x > W) p.vx *= -1;
+                        if (p.y < 0 || p.y > H) p.vy *= -1;
+                    }
+
+                    // Répulsion douce par la souris
+                    var dx = p.x - mouse.x, dy = p.y - mouse.y;
+                    var d2 = dx * dx + dy * dy;
+                    if (d2 < MOUSE_DIST * MOUSE_DIST) {
+                        var force = (1 - Math.sqrt(d2) / MOUSE_DIST) * 0.4;
+                        p.vx += dx / Math.sqrt(d2 || 1) * force;
+                        p.vy += dy / Math.sqrt(d2 || 1) * force;
+                    }
+                });
+
+                // Connexions entre particules proches
+                for (var i = 0; i < particles.length; i++) {
+                    for (var j = i + 1; j < particles.length; j++) {
+                        var a = particles[i], b = particles[j];
+                        var dx = a.x - b.x, dy = a.y - b.y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < CONNECT_DIST) {
+                            var lineAlpha = (1 - dist / CONNECT_DIST) * 0.35;
+                            if (a.isAnchor && b.isAnchor) lineAlpha *= 2.2;
+                            drawLine(a.x, a.y, b.x, b.y, lineAlpha);
+                        }
+                    }
+                    // Connexion souris
+                    var mx = particles[i].x - mouse.x, my = particles[i].y - mouse.y;
+                    var md = Math.sqrt(mx * mx + my * my);
+                    if (md < MOUSE_DIST) {
+                        drawLine(particles[i].x, particles[i].y, mouse.x, mouse.y,
+                            (1 - md / MOUSE_DIST) * 0.4);
+                    }
+                }
+
+                // Points
+                particles.forEach(function(p) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(' + GOLD + ',' + p.alpha + ')';
+                    ctx.fill();
+                    if (p.isAnchor) {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r + 2, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(' + GOLD + ',0.25)';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                });
+
+                requestAnimationFrame(tick);
+            }
+            tick();
+        })();
 
         // ── À propos — polygones flottants sur canvas
         (function() {
