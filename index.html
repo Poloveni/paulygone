@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paulygone — Création Web à Nîmes</title>
     <meta name="description" content="Création de sites web modernes et performants à Nîmes. Design créatif, développement sur-mesure, SEO optimisé. Portfolio de projets réalisés dans le Gard.">
+    <meta name="keywords" content="création site web Nîmes, développeur web Gard, webdesign Nîmes, site vitrine Nîmes, SEO Nîmes, freelance web Nîmes, agence web Nîmes">
     <!-- Google Search Console verification -->
     <meta name="google-site-verification" content="KQZqccffGkdFeDOMRGES4CmmHMz4jQpfhEcFF7O_mdc" />
     <!-- Open Graph -->
@@ -102,6 +103,7 @@
                 <a href="#processus">Processus</a>
                 <a href="#apropos">À propos</a>
                 <a href="#tarifs">Tarifs</a>
+                <a href="#temoignages">Avis</a>
                 <a href="#contact" class="nav-contact">Contact</a>
             </div>
             <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème"></button>
@@ -467,10 +469,64 @@
         </div>
     </section>
 
+    <!-- Témoignages -->
+    <section id="temoignages" class="section">
+        <div class="container">
+            <header class="section-head reveal" data-num="06">
+                <span class="eyebrow">Témoignages</span>
+                <h2>Ce que disent mes clients</h2>
+                <p>Les premiers retours arrivent — ils seront bientôt ici</p>
+            </header>
+
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars" aria-label="5 étoiles">★★★★★</div>
+                    <p class="testimonial-text">"Un résultat qui dépasse toutes mes attentes. Paul a su comprendre exactement ce que je voulais et l'a concrétisé avec talent et professionnalisme."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" aria-hidden="true">M</div>
+                        <div>
+                            <div class="testimonial-name">Martin D.</div>
+                            <div class="testimonial-role">Artisan — Gard</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-placeholder-badge">Témoignage à venir</div>
+                </div>
+
+                <div class="testimonial-card testimonial-card--featured reveal">
+                    <div class="testimonial-stars" aria-label="5 étoiles">★★★★★</div>
+                    <p class="testimonial-text">"Très réactif, à l'écoute et force de proposition. Notre site a été livré en avance et nos clients nous le complimentent tous les jours."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" aria-hidden="true">S</div>
+                        <div>
+                            <div class="testimonial-name">Sophie L.</div>
+                            <div class="testimonial-role">Commerçante — Nîmes</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-placeholder-badge">Témoignage à venir</div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars" aria-label="5 étoiles">★★★★★</div>
+                    <p class="testimonial-text">"Je recommande sans hésiter. Paul maîtrise aussi bien le design que la technique. Mon site est rapide, beau et visible sur Google."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" aria-hidden="true">T</div>
+                        <div>
+                            <div class="testimonial-name">Thomas R.</div>
+                            <div class="testimonial-role">Entrepreneur — Montpellier</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-placeholder-badge">Témoignage à venir</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="section section-alt">
         <div class="container">
-            <header class="section-head reveal" data-num="06">
+            <header class="section-head reveal" data-num="07">
                 <span class="eyebrow">FAQ</span>
                 <h2>Questions fréquentes</h2>
                 <p>Tout ce que vous voulez savoir avant de vous lancer</p>
@@ -575,7 +631,7 @@
 
                 </div>
 
-                <form class="contact-form reveal" id="contactForm">
+                <form class="contact-form reveal" id="contactForm" novalidate>
                     <div class="form-group">
                         <label for="name">Nom complet</label>
                         <input type="text" id="name" name="name" placeholder="Votre nom" required>
@@ -592,29 +648,41 @@
                         <label for="project">Type de projet</label>
                         <select id="project" name="project" required>
                             <option value="">Sélectionnez...</option>
-                            <option value="site-vitrine">Site vitrine</option>
-                            <option value="e-commerce">E-commerce</option>
-                            <option value="portfolio">Portfolio</option>
-                            <option value="refonte">Refonte de site existant</option>
-                            <option value="autre">Autre</option>
+                            <option value="Site vitrine">Site vitrine</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Portfolio">Portfolio</option>
+                            <option value="Refonte">Refonte de site existant</option>
+                            <option value="Autre">Autre</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="message">Votre projet</label>
                         <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">
-                        Envoyer
-                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <button type="submit" class="btn-submit" id="contactSubmit">
+                        <span class="btn-submit-label">Envoyer</span>
+                        <span class="btn-submit-spinner" aria-hidden="true"></span>
+                        <svg class="btn-submit-arrow" width="16" height="16" viewBox="0 0 20 20" fill="none">
                             <path d="M18 2L9 11M18 2L12 18L9 11M18 2L2 8L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                     <p class="form-notice">En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter.</p>
+                    <div class="form-success" id="formSuccess" aria-live="polite">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#C9A96E" stroke-width="1.5"/><path d="M10 16L14 20L22 12" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <p>Message envoyé — je vous réponds sous 24h !</p>
+                    </div>
                 </form>
 
             </div>
         </div>
     </section>
+
+    <!-- Bouton retour en haut -->
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 14V4M4 9L9 4L14 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1319,10 +1387,12 @@
         if (form) {
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
-                const btn = form.querySelector('.btn-submit');
-                const original = btn.innerHTML;
-                btn.textContent = 'Envoi en cours…';
+                const btn    = form.querySelector('.btn-submit');
+                const label  = btn.querySelector('.btn-submit-label');
+                const succ   = document.getElementById('formSuccess');
+                btn.classList.add('sending');
                 btn.disabled = true;
+                if (label) label.textContent = 'Envoi…';
 
                 const formData = new FormData(form);
                 formData.append('access_key', '1a79de7f-cdea-4b44-bd65-ef53ac8cf7d6');
@@ -1333,16 +1403,32 @@
                     const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
                     const data = await res.json();
                     if (data.success) {
-                        btn.textContent = 'Message envoyé ✓';
-                        btn.style.background = '#4a7c59';
+                        btn.style.display = 'none';
+                        form.querySelector('.form-notice').style.display = 'none';
+                        if (succ) succ.classList.add('visible');
                         form.reset();
-                        setTimeout(function () { btn.innerHTML = original; btn.style.background = ''; btn.disabled = false; }, 4000);
                     } else { throw new Error(data.message); }
                 } catch (err) {
-                    btn.textContent = 'Erreur — réessayez';
-                    btn.style.background = '#8B2020';
-                    setTimeout(function () { btn.innerHTML = original; btn.style.background = ''; btn.disabled = false; }, 3000);
+                    btn.classList.remove('sending');
+                    btn.disabled = false;
+                    if (label) label.textContent = 'Erreur — réessayez';
+                    setTimeout(function () {
+                        btn.classList.remove('sending');
+                        if (label) label.textContent = 'Envoyer';
+                        btn.disabled = false;
+                    }, 3000);
                 }
+            });
+        }
+
+        // ── Bouton retour en haut
+        const backBtn = document.getElementById('backToTop');
+        if (backBtn) {
+            window.addEventListener('scroll', function() {
+                backBtn.classList.toggle('visible', window.scrollY > 500);
+            }, { passive: true });
+            backBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 

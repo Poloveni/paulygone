@@ -1898,6 +1898,249 @@ a.detail-value:hover { color: var(--gold); }
 
 /* L'icône est injectée et gérée entièrement par JS */
 
+/* ────────────────── TÉMOIGNAGES ────────────────── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  position: relative;
+  transition: border-color var(--transition), transform var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.testimonial-card:hover {
+  border-color: var(--border-h);
+  transform: translateY(-4px);
+}
+
+.testimonial-card--featured {
+  border-color: var(--gold-dim);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,169,110,0.04) 100%);
+}
+
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.testimonial-role {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.testimonial-placeholder-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px dashed rgba(201,169,110,0.35);
+  padding: 3px 8px;
+  border-radius: 20px;
+  opacity: 0.6;
+}
+
+/* ────────────────── BACK TO TOP ────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-h);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.35s, visibility 0.35s, transform 0.35s, background var(--transition), border-color var(--transition);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0D0D0D;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+  .back-to-top { bottom: 20px; right: 20px; }
+}
+
+/* ────────────────── FORM — BOUTON + ÉTATS ────────────────── */
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit-label {
+  transition: opacity 0.2s;
+}
+
+.btn-submit-arrow {
+  transition: opacity 0.2s;
+}
+
+.btn-submit-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(201,169,110,0.3);
+  border-top-color: #C9A96E;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn-submit.sending .btn-submit-spinner { display: block; }
+.btn-submit.sending .btn-submit-arrow   { opacity: 0; }
+
+@keyframes spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* ── Succès formulaire */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px;
+  text-align: center;
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.form-success.visible { display: flex; }
+
+/* ────────────────── PORTFOLIO — HOVER AMÉLIORÉ ────────────────── */
+.portfolio-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-screenshot {
+  width: 100%;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item-link:hover .portfolio-screenshot {
+  transform: scale(1.05);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 8, 5, 0.88) 0%,
+    rgba(10, 8, 5, 0.45) 50%,
+    rgba(10, 8, 5, 0.10) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.portfolio-item-link:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-visit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #F0EAE0;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(201,169,110,0.18);
+  border: 1px solid rgba(201,169,110,0.45);
+  padding: 7px 14px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s;
+}
+
+.portfolio-item-link:hover .portfolio-visit {
+  background: rgba(201,169,110,0.30);
+}
+
 /* ────────────────── REDUCED MOTION ────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
