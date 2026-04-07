@@ -155,9 +155,9 @@ button { cursor: pointer; font-family: inherit; }
 
 .logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
 }
 
@@ -198,6 +198,8 @@ button { cursor: pointer; font-family: inherit; }
   text-transform: uppercase;
   color: var(--gold);
   line-height: 1;
+  padding-left: 10px;
+  border-left: 1px solid rgba(201,169,110,0.35);
 }
 
 .nav-links {
