@@ -155,8 +155,9 @@ button { cursor: pointer; font-family: inherit; }
 
 .logo {
   display: flex;
-  align-items: center;
-  gap: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   text-decoration: none;
 }
 
