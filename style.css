@@ -1465,6 +1465,8 @@ a.detail-value:hover { color: var(--gold); }
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .hero-title .word-inner {
   display: inline-block;
