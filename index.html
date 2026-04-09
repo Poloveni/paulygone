@@ -1452,4 +1452,15 @@
             if (!a) return;
             var href = a.getAttribute('href');
             if (!href || href.startsWith('#') || href.startsWith('http') ||
-                href.startsWith('mailto:') || href.startsWith('tel:'
+                href.startsWith('mailto:') || href.startsWith('tel:') ||
+                a.target === '_blank') return;
+            e.preventDefault();
+            overlay.classList.remove('pt-hidden');
+            overlay.classList.add('pt-visible');
+            setTimeout(function() { window.location.href = href; }, 650);
+        });
+    })();
+    </script>
+
+</body>
+</html>
