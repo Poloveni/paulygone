@@ -1493,42 +1493,6 @@ a.detail-value:hover { color: var(--gold); }
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-/* ────────────────── CURSOR ────────────────── */
-@media (pointer: fine) {
-  body { cursor: none; }
-  a, button { cursor: none; }
-}
-
-.cursor-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 5px; height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-  will-change: transform;
-}
-
-.cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(201, 169, 110, 0.45);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s;
-  will-change: transform;
-}
-
-.cursor-dot.hovered { width: 8px; height: 8px; background: var(--gold-light); }
-.cursor-ring.hovered { width: 56px; height: 56px; border-color: rgba(201, 169, 110, 0.75); }
-.cursor-dot.clicked { width: 3px; height: 3px; }
-.cursor-ring.clicked { width: 28px; height: 28px; }
 
 /* ────────────────── HERO — KEN BURNS + NOISE ────────────────── */
 @keyframes kenBurns {
@@ -2144,5 +2108,4 @@ a.detail-value:hover { color: var(--gold); }
 /* ────────────────── REDUCED MOTION ────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  .cursor-dot, .cursor-ring { display: none; }
 }

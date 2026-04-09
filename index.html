@@ -802,46 +802,6 @@
             setTimeout(function() { heroTitle.classList.add('words-visible'); }, 200);
         }
 
-        // ── Custom cursor (desktop only)
-        if (window.matchMedia('(pointer: fine)').matches) {
-            const dot  = document.createElement('div');
-            const ring = document.createElement('div');
-            dot.className  = 'cursor-dot';
-            ring.className = 'cursor-ring';
-            document.body.append(dot, ring);
-
-            let mx = -100, my = -100, rx = -100, ry = -100;
-
-            document.addEventListener('mousemove', function(e) {
-                mx = e.clientX; my = e.clientY;
-                dot.style.left = mx + 'px';
-                dot.style.top  = my + 'px';
-            });
-
-            (function animRing() {
-                rx += (mx - rx) * 0.13;
-                ry += (my - ry) * 0.13;
-                ring.style.left = rx + 'px';
-                ring.style.top  = ry + 'px';
-                requestAnimationFrame(animRing);
-            })();
-
-            document.addEventListener('mousedown', function() {
-                dot.classList.add('clicked'); ring.classList.add('clicked');
-            });
-            document.addEventListener('mouseup', function() {
-                dot.classList.remove('clicked'); ring.classList.remove('clicked');
-            });
-
-            document.querySelectorAll('a, button, .portfolio-item-link').forEach(function(el) {
-                el.addEventListener('mouseenter', function() {
-                    dot.classList.add('hovered'); ring.classList.add('hovered');
-                });
-                el.addEventListener('mouseleave', function() {
-                    dot.classList.remove('hovered'); ring.classList.remove('hovered');
-                });
-            });
-        }
 
         // ── Portfolio 3D tilt
         document.querySelectorAll('.portfolio-item').forEach(function(card) {
