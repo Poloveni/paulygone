@@ -1312,6 +1312,26 @@ a.detail-value:hover { color: var(--gold); }
 
 .footer-links a:hover { color: var(--text-muted); }
 
+.footer-contact {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-phone,
+.footer-email {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.footer-phone:hover,
+.footer-email:hover { color: var(--gold); }
+
 /* ────────────────── ANIMATIONS ────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
