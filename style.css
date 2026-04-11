@@ -2305,66 +2305,174 @@ a.detail-value:hover { color: var(--gold); }
 }
 
 /* ────────────────── COMPARATIF ────────────────── */
-.comparatif-section { background: var(--bg); }
+.comparatif-section { background: var(--surface); }
 
-.comparatif-table-wrap {
-  overflow-x: auto;
-  margin-top: 48px;
-  border-radius: 12px;
+.comparatif-grid {
+  display: grid;
+  grid-template-columns: 180px repeat(3, 1fr);
+  gap: 0 16px;
+  margin-top: 52px;
+  align-items: start;
+}
+
+/* Labels column */
+.cmp-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp-label-spacer {
+  height: 148px;
+}
+
+.cmp-label {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-right: 16px;
+}
+
+/* Columns */
+.cmp-col {
+  border-radius: 16px;
+  overflow: hidden;
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
 }
 
-.comparatif-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
+.cmp-col--highlight {
+  border: 2px solid var(--gold);
+  background: var(--bg);
+  box-shadow: 0 8px 40px rgba(201,169,110,0.12);
+  position: relative;
+  margin-top: -8px;
 }
 
-.comparatif-table th,
-.comparatif-table td {
-  padding: 14px 20px;
+/* Column header */
+.cmp-head {
+  padding: 24px 20px 20px;
   text-align: center;
   border-bottom: 1px solid var(--border);
-  vertical-align: middle;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.comparatif-table th {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+.cmp-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  background: var(--surface);
-  font-weight: 400;
+  color: var(--gold);
+  background: rgba(201,169,110,0.12);
+  border: 1px solid rgba(201,169,110,0.3);
+  padding: 4px 12px;
+  border-radius: 100px;
 }
 
-.comparatif-table td:first-child,
-.comparatif-table th:first-child {
-  text-align: left;
+.cmp-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.cmp-col--highlight .cmp-logo-name { color: var(--gold); font-size: 1.4rem; }
+
+.cmp-price {
+  font-size: 0.82rem;
+  color: var(--gold);
+}
+.cmp-price strong { font-size: 1.1rem; }
+
+.cmp-price-muted {
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+}
+
+/* Rows */
+.cmp-row {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
   color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding: 0 12px;
+}
+
+.cmp-row--value {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.cmp-row--muted { color: var(--text-subtle); font-size: 0.8rem; }
+
+.cmp-col--highlight .cmp-row { background: rgba(201,169,110,0.03); }
+
+/* Icons */
+.cmp-yes {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--gold);
   font-size: 0.82rem;
 }
 
-.comparatif-table tbody tr:last-child td { border-bottom: none; }
+.cmp-yes--neutral { color: var(--text-muted); }
 
-.comparatif-table tbody tr:hover td { background: var(--surface); }
-
-.col-paulygone {
-  background: rgba(201,169,110,0.06) !important;
-  color: var(--gold) !important;
-  border-left: 2px solid rgba(201,169,110,0.3) !important;
-  border-right: 2px solid rgba(201,169,110,0.3) !important;
-}
-
-.col-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  background: rgba(201,169,110,0.15);
-  border-radius: 100px;
+.cmp-yes--aucun {
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--gold);
-  font-size: 0.75rem;
 }
 
-.comparatif-table td.col-paulygone strong { color: var(--gold); }
+.cmp-no {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-subtle);
+  font-size: 0.78rem;
+}
+
+/* CTA row */
+.cmp-cta {
+  padding: 20px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.cmp-cta--empty { height: 72px; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .comparatif-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cmp-labels { display: none; }
+  .cmp-label-spacer { display: none; }
+}
+
+@media (max-width: 560px) {
+  .comparatif-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .cmp-col--highlight { margin-top: 0; }
+  .cmp-row { height: auto; padding: 12px; }
+  .cmp-head { min-height: auto; }
+}
 
 /* ────────────────── GARANTIE STRIP ────────────────── */
 .garantie-strip {
