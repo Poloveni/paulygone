@@ -1978,6 +1978,53 @@ a.detail-value:hover { color: var(--gold); }
   opacity: 0.6;
 }
 
+/* ────────────────── AVIS GOOGLE CTA ────────────────── */
+.avis-google-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.avis-google-cta svg:first-child { flex-shrink: 0; }
+
+.avis-google-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 180px;
+}
+
+.avis-google-text strong {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.avis-google-text span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.avis-google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .avis-google-cta { flex-direction: column; align-items: flex-start; }
+  .avis-google-btn { width: 100%; justify-content: center; }
+}
+
 /* ────────────────── BACK TO TOP ────────────────── */
 .back-to-top {
   position: fixed;
