@@ -1134,6 +1134,16 @@ button { cursor: pointer; font-family: inherit; }
   margin-bottom: 48px;
 }
 
+.contact-video {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 36px;
+  display: block;
+  object-fit: cover;
+  max-height: 220px;
+  opacity: 0.85;
+}
+
 .contact-details {
   display: flex;
   flex-direction: column;
