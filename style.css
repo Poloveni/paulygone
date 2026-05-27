@@ -4,16 +4,16 @@
    ============================================================ */
 
 :root {
-  --bg:          #0D0D0D;
-  --bg-soft:     #111111;
-  --bg-card:     #161616;
-  --bg-card-h:   #1C1C1C;
+  --bg:          #0F1D2E;
+  --bg-soft:     #152438;
+  --bg-card:     #1A2F47;
+  --bg-card-h:   #1F3652;
   --gold:        #C9A96E;
   --gold-light:  #DEC48A;
   --gold-dim:    rgba(201, 169, 110, 0.18);
-  --text:        #F0EAE0;
-  --text-muted:  #7A7570;
-  --text-subtle: #3A3830;
+  --text:        #EDF2F8;
+  --text-muted:  #7A90A8;
+  --text-subtle: #2E4460;
   --border:      rgba(201, 169, 110, 0.14);
   --border-h:    rgba(201, 169, 110, 0.40);
   --font-serif:  'Cormorant Garamond', Georgia, serif;
@@ -28,18 +28,18 @@
 
 /* ────────────────── LIGHT THEME ────────────────── */
 [data-theme="light"] {
-  --bg:          #F8F4EE;
-  --bg-soft:     #EEE8DE;
+  --bg:          #F4F7FB;
+  --bg-soft:     #E8F0F8;
   --bg-card:     #FFFFFF;
-  --bg-card-h:   #FAF7F2;
+  --bg-card-h:   #EEF4FB;
   --gold:        #9A6E2A;
   --gold-light:  #B88840;
   --gold-dim:    rgba(154, 110, 42, 0.10);
-  --text:        #1A1610;
-  --text-muted:  #5C5040;
-  --text-subtle: #8A7D6E;
-  --border:      rgba(154, 110, 42, 0.14);
-  --border-h:    rgba(154, 110, 42, 0.44);
+  --text:        #0F1D2E;
+  --text-muted:  #3A5470;
+  --text-subtle: #7A90A8;
+  --border:      rgba(15, 29, 46, 0.12);
+  --border-h:    rgba(15, 29, 46, 0.30);
 }
 
 /* Hero — forcer texte clair en mode jour (image sombre dans les deux thèmes) */
@@ -401,7 +401,7 @@ button { cursor: pointer; font-family: inherit; }
 
 .btn-gold {
   background: var(--gold);
-  color: #0D0D0D;
+  color: #0F1D2E;
 }
 
 .btn-gold:hover {
@@ -933,7 +933,7 @@ button { cursor: pointer; font-family: inherit; }
   left: 50%;
   transform: translateX(-50%);
   background: var(--gold);
-  color: #0D0D0D;
+  color: #0F1D2E;
   font-family: 'Inter', sans-serif;
   font-size: 9px;
   font-weight: 600;
@@ -1252,7 +1252,7 @@ a.detail-value:hover { color: var(--gold); }
 .btn-submit {
   margin-top: 4px;
   background: var(--gold);
-  color: #0D0D0D;
+  color: #0F1D2E;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -2056,7 +2056,7 @@ a.detail-value:hover { color: var(--gold); }
 .back-to-top:hover {
   background: var(--gold);
   border-color: var(--gold);
-  color: #0D0D0D;
+  color: #0F1D2E;
   transform: translateY(-3px);
 }
 
@@ -2343,7 +2343,7 @@ a.detail-value:hover { color: var(--gold); }
   .mobile-cta-whatsapp:hover { background: rgba(37,211,102,0.08); }
   .mobile-cta-devis {
     background: var(--gold);
-    color: #0D0D0D;
+    color: #0F1D2E;
     font-weight: 600;
   }
   .mobile-cta-devis:hover { background: var(--gold-light); }
