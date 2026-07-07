@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.disabled = false;
         if (label) label.textContent = 'Erreur — réessayez';
         setTimeout(function () {
-          if (label) label.textContent = 'Envoyer';
+          if (label) label.textContent = 'Envoyer ma demande';
         }, 3000);
       }
     });
