@@ -136,6 +136,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
+  /* ---------- Vidéo différée (chargée quand visible) ---------- */
+  var lazyVid = document.querySelector('video[data-src]');
+  if (lazyVid) {
+    var loadVid = function () {
+      lazyVid.src = lazyVid.getAttribute('data-src');
+      lazyVid.removeAttribute('data-src');
+      lazyVid.play().catch(function () {});
+    };
+    if ('IntersectionObserver' in window) {
+      var vidObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { loadVid(); vidObs.disconnect(); }
+        });
+      }, { rootMargin: '300px' });
+      vidObs.observe(lazyVid);
+    } else {
+      loadVid();
+    }
+  }
+
   /* ---------- Formulaire de contact (Web3Forms) ---------- */
   var form = document.getElementById('contactForm');
   if (form) {
