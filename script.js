@@ -42,6 +42,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Apparition des éléments au scroll ---------- */
   var reveals = document.querySelectorAll('.reveal');
+
+  /* Cascade : décalage progressif entre éléments d'un même groupe */
+  var revealGroups = [];
+  reveals.forEach(function (el) {
+    var p = el.parentElement;
+    var idx = revealGroups.indexOf(p);
+    if (idx === -1) { revealGroups.push(p); p.__revealIndex = 0; }
+    el.style.transitionDelay = Math.min(p.__revealIndex * 90, 450) + 'ms';
+    p.__revealIndex++;
+  });
+
   if ('IntersectionObserver' in window && reveals.length) {
     var revealObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {

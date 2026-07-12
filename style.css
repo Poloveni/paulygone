@@ -89,7 +89,12 @@ ul { list-style: none; }
   font-weight: 400;
   color: var(--gold);
 }
-.section-head p { margin-top: 16px; color: var(--ink-soft); font-size: 17.5px; }
+.section-head h2::after {
+  content: ""; display: block; width: 44px; height: 1px;
+  background: var(--gold); margin: 24px auto 0; opacity: .8;
+}
+.section-head--left h2::after { margin-inline: 0; }
+.section-head p { margin-top: 18px; color: var(--ink-soft); font-size: 17.5px; }
 
 /* ---------- 4. Boutons ---------- */
 .btn {
@@ -224,12 +229,28 @@ ul { list-style: none; }
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 .portfolio-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
-.portfolio-image { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-alt); border-bottom: 1px solid var(--line); }
+.portfolio-image {
+  position: relative; aspect-ratio: 16 / 11; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--bg-alt); border-bottom: 1px solid var(--line);
+}
+.browser-bar {
+  flex-shrink: 0; height: 38px;
+  display: flex; align-items: center; gap: 6px; padding: 0 14px;
+  background: #F1EFE7; border-bottom: 1px solid var(--line);
+}
+.bdot { width: 9px; height: 9px; border-radius: 50%; background: #DCD7C8; }
+.browser-url {
+  margin-left: 10px; font-size: 11.5px; letter-spacing: .02em; color: var(--ink-faint);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 100px; padding: 3px 14px;
+}
+.portfolio-image picture { flex: 1; min-height: 0; overflow: hidden; }
 .portfolio-screenshot { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
 .portfolio-item:hover .portfolio-screenshot { transform: scale(1.04); }
 .portfolio-overlay {
-  position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end;
-  padding: 18px; opacity: 0; transition: opacity var(--transition);
+  position: absolute; top: 38px; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  padding: 18px; opacity: 0; transition: opacity var(--transition); z-index: 1;
   background: linear-gradient(to top, rgba(25,24,19,.45), transparent 55%);
 }
 .portfolio-item:hover .portfolio-overlay { opacity: 1; }
@@ -564,7 +585,7 @@ a.detail-value:hover { color: var(--gold); }
 }
 
 /* ---------- 23. Reveal au scroll ---------- */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1); }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 1s cubic-bezier(.16,.68,.24,1), transform 1s cubic-bezier(.16,.68,.24,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-2 { transition-delay: .12s; }
 .reveal-3 { transition-delay: .24s; }
