@@ -24,6 +24,14 @@
   --on-dark:       #F5F3EC;
   --on-dark-soft:  rgba(245,243,236,.6);
 
+  /* Couleurs contextuelles — redéfinies en mode sombre */
+  --nav-bg:        rgba(251,250,247,.88);  /* fond de la nav une fois scrollée */
+  --chip-bg:       rgba(255,255,255,.92);  /* pastilles au survol des projets */
+  --dot:           #DCD7C8;                /* points de la fausse barre de navigateur */
+  --success:       #2E9E6B;
+  --danger:        #BC6852;
+  --gold-bright:   #D9BC85;                /* or lisible sur fond sombre */
+
   /* Typographie */
   --font-display: "Fraunces", Georgia, serif;
   --font-body:    "Inter", system-ui, -apple-system, sans-serif;
@@ -131,7 +139,7 @@ ul { list-style: none; }
   transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
 }
 .nav.scrolled {
-  background: rgba(251,250,247,.88);
+  background: var(--nav-bg);
   backdrop-filter: saturate(160%) blur(14px);
   box-shadow: 0 1px 0 var(--line);
 }
@@ -160,6 +168,23 @@ ul { list-style: none; }
 .nav-contact:hover { background: var(--gold) !important; color: #fff !important; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; padding: 9px; }
 .nav-burger span { width: 24px; height: 1.5px; background: var(--ink); transition: transform var(--transition), opacity var(--transition); }
+
+/* Bloc à droite de la nav : bouton de thème + burger */
+.nav-tools { display: flex; align-items: center; gap: 6px; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  color: var(--ink-soft);
+  border: 1px solid transparent;
+  transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+.theme-toggle:hover { color: var(--gold); background: var(--gold-soft); border-color: var(--line); }
+.theme-icon { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .2s ease; }
+/* On n'affiche que l'icône de la cible : lune en clair, soleil en sombre */
+.theme-icon--sun  { display: none; }
+[data-theme="dark"] .theme-icon--sun  { display: block; }
+[data-theme="dark"] .theme-icon--moon { display: none; }
+.theme-toggle:hover .theme-icon { transform: rotate(-18deg); }
 
 /* ---------- 7. Hero ---------- */
 .hero {
@@ -239,7 +264,7 @@ ul { list-style: none; }
   display: flex; align-items: center; gap: 6px; padding: 0 14px;
   background: #F1EFE7; border-bottom: 1px solid var(--line);
 }
-.bdot { width: 9px; height: 9px; border-radius: 50%; background: #DCD7C8; }
+.bdot { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); }
 .browser-url {
   margin-left: 10px; font-size: 11.5px; letter-spacing: .02em; color: var(--ink-faint);
   background: var(--surface); border: 1px solid var(--line); border-radius: 100px; padding: 3px 14px;
@@ -311,7 +336,7 @@ ul { list-style: none; }
 .about-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .about-photo-badge {
   position: absolute; bottom: 20px; left: 20px; right: 20px;
-  background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+  background: var(--chip-bg); backdrop-filter: blur(8px);
   border: 1px solid var(--line);
   border-radius: var(--r-sm); padding: 14px 18px; display: flex; align-items: center; gap: 12px;
 }
@@ -682,3 +707,153 @@ a.detail-value:hover { color: var(--gold); }
   .reveal, .fade-up { opacity: 1 !important; transform: none !important; }
 }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* Lien d'évitement : invisible, apparaît à la première tabulation (lecteurs d'écran) */
+.skip-link {
+  position: absolute; top: 8px; left: 8px; z-index: 2000;
+  transform: translateY(-160%);
+  background: var(--ink); color: var(--bg);
+  padding: 12px 20px; border-radius: var(--r-sm);
+  font-size: 14.5px; font-weight: 600;
+  transition: transform var(--transition);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* ---------- 28. Témoignages clients ---------- */
+.avis-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-bottom: 40px;
+}
+.avis-card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-md); padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 18px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.avis-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+.avis-stars { display: flex; gap: 3px; color: #E8A020; }
+.avis-quote {
+  font-family: var(--font-display); font-size: 17.5px; line-height: 1.6;
+  color: var(--ink); flex-grow: 1;
+}
+.avis-quote::before { content: "\201C"; color: var(--gold); font-size: 26px; line-height: 0; vertical-align: -4px; margin-right: 2px; }
+.avis-quote::after  { content: "\201D"; color: var(--gold); font-size: 26px; line-height: 0; vertical-align: -4px; margin-left: 2px; }
+.avis-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.avis-initiale {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--gold-soft); color: var(--gold-ink);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 15px;
+}
+.avis-author-name { font-weight: 600; font-size: 14.5px; display: block; }
+.avis-author-meta { font-size: 13px; color: var(--ink-faint); }
+.avis-source { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink-faint); margin-top: 4px; }
+
+@media (max-width: 1020px) { .avis-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px)  { .avis-grid { grid-template-columns: 1fr; } }
+
+/* ---------- 29. Erreurs de formulaire ---------- */
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 5%, transparent);
+}
+.field-error {
+  display: none;
+  font-size: 13px; color: var(--danger); margin-top: 6px;
+}
+.field-error.visible { display: block; }
+.label-optional { color: var(--ink-faint); font-weight: 400; }
+.form-fallback {
+  display: none;
+  margin-top: 14px; padding: 14px 16px;
+  border: 1px solid var(--danger); border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--danger) 6%, transparent);
+  font-size: 14px; color: var(--ink); line-height: 1.6;
+}
+.form-fallback.visible { display: block; }
+.form-fallback a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+.form-notice a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+/* Champ piège anti-robots : invisible pour les humains, rempli par les bots */
+.hp-field {
+  position: absolute !important; left: -9999px !important;
+  width: 1px; height: 1px; overflow: hidden;
+}
+
+/* ---------- 30. Pages locales (Alès, Uzès, Bagnols, Montpellier) ---------- */
+.ville-hero { min-height: auto; padding: 130px 0 80px; }
+.fil-ariane {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 13.5px; color: var(--ink-faint); margin-bottom: 28px;
+}
+.fil-ariane a { color: var(--gold); }
+.fil-ariane a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.portfolio-grid--trois { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) { .portfolio-grid--trois { grid-template-columns: 1fr; } }
+.ville-lien-portfolio { text-align: center; margin-top: 40px; }
+
+.ville-tarifs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ville-tarif-item {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-md); padding: 28px 26px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.ville-tarif-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.ville-tarif-item--phare { border-color: var(--gold); }
+.ville-tarif-nom { font-family: var(--font-display); font-size: 21px; font-weight: 500; }
+.ville-tarif-prix { color: var(--gold); font-weight: 600; font-size: 15px; }
+.ville-tarif-desc { color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
+.ville-tarifs-note { text-align: center; margin-top: 28px; color: var(--ink-soft); font-size: 15px; }
+.ville-tarifs-note a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 860px) { .ville-tarifs { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; } }
+
+/* Maillage interne en pied de page */
+.footer-villes {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px;
+  font-size: 14px;
+}
+.footer-villes a { color: var(--on-dark-soft); transition: color var(--transition); }
+.footer-villes a:hover { color: var(--gold-bright); }
+
+/* ---------- 31. Mode sombre ---------- */
+[data-theme="dark"] {
+  --bg:            #12110E;
+  --bg-alt:        #1A1815;
+  --surface:       #1E1C18;
+  --ink:           #F0EDE4;
+  --ink-soft:      #ABA79A;
+  --ink-faint:     #817D70;
+  --line:          #2C2A24;
+  --line-strong:   #3D3A31;
+
+  --gold:          #CBAC70;
+  --gold-soft:     #2B2418;
+  --gold-ink:      #E5CE9F;
+
+  --dark:          #0B0A08;
+  --on-dark:       #F0EDE4;
+  --on-dark-soft:  rgba(240,237,228,.6);
+
+  --nav-bg:        rgba(18,17,14,.9);
+  --chip-bg:       rgba(30,28,24,.94);
+  --dot:           #3D3A31;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3), 0 3px 10px rgba(0,0,0,.25);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.35), 0 18px 44px rgba(0,0,0,.45);
+
+  color-scheme: dark;
+}
+/* Sur fond sombre, l'or a besoin d'un texte foncé pour rester lisible */
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .btn-lime:hover,
+[data-theme="dark"] .nav-contact:hover { color: #14120E !important; }
+[data-theme="dark"] .btn-primary:hover { box-shadow: 0 10px 26px rgba(203,172,112,.22); }
+/* Les captures d'écran des projets sont légèrement adoucies pour ne pas éblouir */
+[data-theme="dark"] .portfolio-screenshot,
+[data-theme="dark"] .about-photo { filter: brightness(.92) contrast(1.02); }
+[data-theme="dark"] .portfolio-item:hover .portfolio-screenshot { filter: none; }
+[data-theme="dark"] .footer { border-top: 1px solid var(--line); }
+[data-theme="dark"] .avis-stars { color: #E0A845; }

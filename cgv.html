@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+
+    <!-- Thème clair/sombre : appliqué AVANT le rendu pour éviter tout clignotement -->
+    <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('paulygone-theme');
+        var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', saved || sys);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+    </script>
     <title>Conditions générales de vente — Paulygone</title>
     <meta name="description" content="Conditions générales de vente des prestations de création de sites web Paulygone.">
     <link rel="canonical" href="https://paulygone.fr/cgv.html">
@@ -10,14 +25,16 @@
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="legal-header">
         <div class="legal-header-inner">
             <a href="index.html" class="logo" aria-label="Paulygone — accueil">
-                <img src="logo.png" alt="Paulygone" class="logo-img">
+                <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Paulygone" class="logo-img" width="400" height="218"></picture>
                 <span class="logo-sub">Web Creation</span>
             </a>
             <a href="index.html#contact" class="btn btn-primary" style="padding:11px 22px;">Contact</a>
@@ -168,5 +185,6 @@
             <p class="footer-copy">© 2026 Paulygone — Création de sites web à Nîmes</p>
         </div>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>
