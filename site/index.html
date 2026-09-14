@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paul Schricke — Créateur de sites web indépendant à Nîmes, Gard</title>
+  <meta name="description" content="Créateur de sites web indépendant à Nîmes, dans le Gard. Design UX/UI et développement sur mesure : sites vitrines, landing pages, portfolios, espaces membres. Des sites qui ont une identité, pas un template." />
+  <meta property="og:title" content="Paul Schricke — Des sites qui ont une identité, pas un template." />
+  <meta property="og:description" content="Créateur web indépendant. Design, code, mise en ligne : un seul interlocuteur." />
+  <meta property="og:image" content="https://__DOMAINE__/img/hero-poster.jpg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://__DOMAINE__/" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://__DOMAINE__/" />
+  <meta name="theme-color" content="#0F0E0C" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="/img/hero-poster.jpg" media="(min-width: 768px)" />
+  <link rel="preload" as="image" href="/img/hero-poster-mobile.webp" type="image/webp" media="(max-width: 767px)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Manrope:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="stylesheet" href="/src/glass.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Paul Schricke",
+    "jobTitle": "Créateur de sites web indépendant",
+    "description": "Design UX/UI et développement de sites web sur mesure pour les indépendants, commerçants et PME.",
+    "url": "https://__DOMAINE__/",
+    "email": "mailto:schricke.paul@gmail.com",
+    "image": "https://__DOMAINE__/img/hero-poster.jpg",
+    "sameAs": ["https://www.linkedin.com/in/paulschricke/"],
+    "address": { "@type": "PostalAddress", "addressRegion": "Gard", "addressLocality": "Nîmes", "addressCountry": "FR" },
+    "areaServed": "France",
+    "knowsAbout": ["Design UX/UI", "Développement web", "Sites vitrines", "Landing pages", "Espaces membres"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#page">Aller au contenu</a>
+
+  <!-- Fond : vidéo scrubée + voile + grain -->
+  <video id="bgv" class="bg-video" muted playsinline preload="none" poster="/img/hero-poster.jpg" data-src="/bg.mp4" aria-hidden="true" tabindex="-1"></video>
+  <picture class="bg-poster" aria-hidden="true">
+    <source media="(max-width: 767px)" srcset="/img/hero-poster-mobile.webp" type="image/webp" />
+    <source media="(max-width: 767px)" srcset="/img/hero-poster-mobile.jpg" />
+    <source srcset="/img/hero-poster.webp" type="image/webp" />
+    <img src="/img/hero-poster.jpg" alt="" loading="lazy" decoding="async" />
+  </picture>
+  <div class="bg-tint" aria-hidden="true"></div>
+  <div class="bg-veil" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Curseur -->
+  <div id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" aria-label="Paul Schricke, retour en haut">Paul <em>Schricke</em></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="#work">Réalisations</a>
+      <a href="#services">Ce que je crée</a>
+      <a href="#method">Méthode</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="glass glass-btn glass-btn--ghost nav__cta" href="#contact">Parler de votre projet</a>
+    <button class="nav__burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#work">Réalisations</a>
+    <a href="#services">Ce que je crée</a>
+    <a href="#method">Méthode</a>
+    <a href="#about">Derrière l'écran</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="mobile-menu__cta">Parler de votre projet</a>
+  </div>
+
+  <main id="page">
+
+    <!-- 00 HERO -->
+    <section class="hero" id="top" aria-label="Accueil">
+      <div class="hero__inner">
+        <p class="mono hero__kicker" data-hero>Créateur web indépendant — Nîmes · Gard · France</p>
+        <h1 class="hero__title" data-hero>
+          <span class="line">Des sites qui ont</span>
+          <span class="line"><em>une identité</em>,</span>
+          <span class="line">pas un template.</span>
+        </h1>
+        <p class="hero__sub" data-hero>Je conçois et développe des sites sur mesure pour les indépendants, commerçants et PME. Design, code, mise en ligne : un seul interlocuteur.</p>
+        <div class="hero__ctas" data-hero>
+          <a class="glass glass-btn glass-btn--primary" href="#contact">Parler de votre projet</a>
+          <a class="glass glass-btn glass-btn--ghost" href="#work">Voir mes réalisations</a>
+        </div>
+      </div>
+      <div class="hero__scroll mono" data-hero><span></span>Défiler</div>
+    </section>
+
+    <!-- 01 RÉALISATIONS -->
+    <section class="section work" id="work">
+      <div class="section__head" data-reveal>
+        <p class="mono kicker">01 — Réalisations</p>
+        <h2>Mes réalisations parlent <em>pour moi</em>.</h2>
+        <p class="lead">Une réalisation racontée en détail, plutôt qu'une grille de miniatures.</p>
+      </div>
+
+      <article class="case">
+        <div class="case__stage" data-reveal>
+          <figure class="case__scene" id="caseScene">
+            <picture>
+              <source srcset="/img/oliv-scene.webp" type="image/webp" />
+              <img src="/img/oliv-scene.jpg" alt="Le site Show Room Oliv présenté sur un écran et un téléphone, dans la lumière de l'atelier" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+          <figure class="device device--desktop" data-parallax="-40">
+            <div class="device__bar"><i></i><i></i><i></i><span class="mono">show-room-oliv.fr</span></div>
+            <picture>
+              <source srcset="/img/oliv-desktop-accueil.webp" type="image/webp" />
+              <img src="/img/oliv-desktop-accueil.jpg" alt="Page d'accueil de Show Room Oliv sur ordinateur" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+          <figure class="device device--phone" data-parallax="60">
+            <picture>
+              <source srcset="/img/oliv-mobile-accueil.webp" type="image/webp" />
+              <img src="/img/oliv-mobile-accueil.jpg" alt="Page d'accueil de Show Room Oliv sur mobile" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+
+        <div class="case__copy">
+          <header class="case__title" data-reveal>
+            <h3>Show Room Oliv</h3>
+            <p class="mono case__meta">Boutique mode femme · Nîmes · Site vitrine one-page · Env. 2 semaines</p>
+          </header>
+
+          <div class="glass case__card" data-reveal>
+            <h4 class="mono">Le contexte</h4>
+            <p>Une boutique de 400 m² en plein centre de Nîmes, six marques exclusives, visite sur rendez-vous. Un ancien site vieillissant, et une présence en ligne qui reposait surtout sur Instagram et Google.</p>
+          </div>
+          <div class="glass case__card" data-reveal>
+            <h4 class="mono">Le besoin</h4>
+            <p>Présenter clairement l'univers, les marques et le fonctionnement sur rendez-vous. Donner envie de venir. Rendre la prise de contact évidente.</p>
+          </div>
+          <div class="glass case__card case__card--accent" data-reveal>
+            <h4 class="mono">Ma réponse</h4>
+            <p>Une identité sombre et chaleureuse, inspirée de la boutique elle-même : fond brun profond, touches dorées, typographie serif élégante. Un one-page en sept temps, numérotés comme les chapitres d'un magazine. Et en héros, la mascotte de la boutique : mon idée, pour un site reconnaissable au premier regard, loin du site de boutique classique.</p>
+          </div>
+
+          <div class="case__delivered" data-reveal>
+            <h4 class="mono">Ce que j'ai livré</h4>
+            <ul class="chips">
+              <li class="glass glass-chip">Design UX/UI</li>
+              <li class="glass glass-chip">Développement complet</li>
+              <li class="glass glass-chip">Hébergement et nom de domaine</li>
+              <li class="glass glass-chip">Mise en ligne</li>
+              <li class="glass glass-chip">Référencement de base</li>
+              <li class="glass glass-chip">Optimisation mobile</li>
+              <li class="glass glass-chip">Contenus visuels du client, complétés et retravaillés</li>
+            </ul>
+          </div>
+
+          <div class="case__details" data-reveal>
+            <h4 class="mono">Dans le détail</h4>
+            <ul class="details">
+              <li>Galerie photos avec agrandissement, et six galeries de marques dépliables</li>
+              <li>Vidéos tournées dans la boutique</li>
+              <li>Indicateur d'ouverture en temps réel</li>
+              <li>Formulaire de contact, WhatsApp, itinéraire et parkings à proximité</li>
+              <li>Carte chargée à la demande pour garder la page rapide</li>
+              <li>Code léger sans framework, images optimisées, données structurées pour Google</li>
+              <li>Animations qui respectent les préférences de mouvement du visiteur</li>
+            </ul>
+          </div>
+
+          <div class="case__gallery" data-reveal>
+            <figure class="device device--desktop device--small">
+              <div class="device__bar"><i></i><i></i><i></i><span class="mono">Collections</span></div>
+              <picture><source srcset="/img/oliv-desktop-collections.webp" type="image/webp" /><img src="/img/oliv-desktop-collections.jpg" alt="Section Collections du site Show Room Oliv" loading="lazy" decoding="async" /></picture>
+            </figure>
+            <figure class="device device--desktop device--small">
+              <div class="device__bar"><i></i><i></i><i></i><span class="mono">Nos marques</span></div>
+              <picture><source srcset="/img/oliv-desktop-marques.webp" type="image/webp" /><img src="/img/oliv-desktop-marques.jpg" alt="Section Nos marques du site Show Room Oliv" loading="lazy" decoding="async" /></picture>
+            </figure>
+            <figure class="device device--desktop device--small">
+              <div class="device__bar"><i></i><i></i><i></i><span class="mono">Le rendez-vous</span></div>
+              <picture><source srcset="/img/oliv-desktop-rendez-vous.webp" type="image/webp" /><img src="/img/oliv-desktop-rendez-vous.jpg" alt="Section Le rendez-vous du site Show Room Oliv" loading="lazy" decoding="async" /></picture>
+            </figure>
+          </div>
+
+          <a class="link-arrow" href="https://show-room-oliv.fr/" target="_blank" rel="noopener" data-reveal>Voir le site en ligne <span class="mono">show-room-oliv.fr</span></a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 02 CE QUE JE CRÉE -->
+    <section class="section services" id="services">
+      <div class="section__head" data-reveal>
+        <p class="mono kicker">02 — Ce que je crée</p>
+        <h2>Du site vitrine au projet <em>sur mesure</em>.</h2>
+      </div>
+      <ul class="services__list">
+        <li class="services__row" data-reveal><span class="mono idx">01</span><h3>Sites vitrines</h3><p>Présenter votre activité avec une vraie identité, pas un modèle réutilisé.</p></li>
+        <li class="services__row" data-reveal><span class="mono idx">02</span><h3>Landing pages</h3><p>Une page, un objectif : convaincre et convertir.</p></li>
+        <li class="services__row" data-reveal><span class="mono idx">03</span><h3>Portfolios</h3><p>Mettre votre travail en scène, avec le niveau de finition qu'il mérite.</p></li>
+        <li class="services__row" data-reveal><span class="mono idx">04</span><h3>Sites professionnels</h3><p>Plusieurs pages, une structure claire, un site qui grandit avec vous.</p></li>
+        <li class="services__row" data-reveal><span class="mono idx">05</span><h3>Espaces membres</h3><p>Connexion, comptes, contenus réservés, base de données.</p></li>
+        <li class="services__row" data-reveal><span class="mono idx">06</span><h3>Projets web sur mesure</h3><p>Réservation, fonctionnalités spécifiques, outils internes. On part de votre besoin, pas d'un plugin.</p></li>
+      </ul>
+    </section>
+
+    <!-- 03 MÉTHODE -->
+    <section class="section method" id="method">
+      <div class="section__head" data-reveal>
+        <p class="mono kicker">03 — Méthode</p>
+        <h2>Un vrai processus, <em>sans jargon</em>.</h2>
+        <p class="lead">Vous savez où vous allez, à chaque étape. Et vous parlez toujours à la même personne.</p>
+      </div>
+      <ol class="steps">
+        <li class="glass step" data-reveal><span class="step__num">I.</span><h3>Comprendre</h3><p>On commence par votre entreprise, vos clients et votre univers. Pas par un template.</p></li>
+        <li class="glass step" data-reveal><span class="step__num">II.</span><h3>Concevoir</h3><p>Identité visuelle, structure, maquettes. On ajuste ensemble jusqu'à ce que ça vous ressemble.</p></li>
+        <li class="glass step" data-reveal><span class="step__num">III.</span><h3>Développer</h3><p>Code propre, site rapide, responsive sur tous les écrans. Des animations seulement quand elles servent.</p></li>
+        <li class="glass step" data-reveal><span class="step__num">IV.</span><h3>Accompagner</h3><p>Mise en ligne, corrections, évolutions. Je reste disponible après.</p></li>
+      </ol>
+      <p class="mono note" data-reveal>Estimation et délai annoncés avant le démarrage — le délai dépend du projet, pas d'une promesse universelle</p>
+    </section>
+
+    <!-- 04 DERRIÈRE L'ÉCRAN -->
+    <section class="section about" id="about">
+      <div class="about__grid">
+        <figure class="about__photo" data-reveal>
+          <picture>
+            <source srcset="/img/portrait-atelier.webp" type="image/webp" />
+            <img src="/img/portrait-atelier.jpg" alt="Paul Schricke dans son atelier" loading="lazy" decoding="async" />
+          </picture>
+        </figure>
+        <div class="about__copy">
+          <div class="section__head" data-reveal>
+            <p class="mono kicker">04 — Derrière l'écran</p>
+            <h2>Paul Schricke, créateur web <em>indépendant</em>.</h2>
+          </div>
+          <p class="about__text" data-reveal>Je fais du design et du développement parce que j'aime les deux : trouver l'idée juste, puis la coder proprement. Quand vous travaillez avec moi, vous travaillez avec moi. Pas de commercial, pas d'intermédiaire, pas de brief perdu entre deux services. Je suis basé dans le Gard, entre Nîmes et Montpellier, et j'accompagne des projets partout en France.</p>
+          <p class="mono note" data-reveal>Basé dans le Gard · Projets dans toute la France · Design + développement</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 FAQ -->
+    <section class="section faq" id="faq">
+      <div class="section__head" data-reveal>
+        <p class="mono kicker">05 — Questions fréquentes</p>
+        <h2>Les questions qu'on me pose <em>avant de se lancer</em>.</h2>
+      </div>
+      <div class="faq__list">
+        <details class="faq__item" data-reveal>
+          <summary>Combien coûte la création d'un site ?<span class="faq__icon"></span></summary>
+          <div class="faq__body"><p>Chaque projet est différent. Pour donner un ordre d'idée, mes prestations démarrent généralement autour de 800 €. Pour un projet plus complet ou avec des fonctionnalités sur mesure, le budget est défini après échange. Vous recevez toujours une estimation claire avant le démarrage.</p></div>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Combien de temps faut-il pour créer un site ?<span class="faq__icon"></span></summary>
+          <div class="faq__body"><p>Ça dépend de la taille du site et de la rapidité des échanges sur les contenus. Le délai prévisionnel est annoncé dès le devis et je vous tiens informé tout au long du projet.</p></div>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Tu travailles uniquement avec des entreprises de Nîmes ?<span class="faq__icon"></span></summary>
+          <div class="faq__body"><p>Non. Je suis basé dans le Gard, mais je travaille à distance avec des clients partout en France.</p></div>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Est-ce que je pourrai modifier mon site après sa mise en ligne ?<span class="faq__icon"></span></summary>
+          <div class="faq__body"><p>Oui. Selon le projet, soit vous gérez vous-même les contenus, soit je m'occupe des mises à jour. On le décide ensemble dès le départ.</p></div>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Tu peux reprendre ou moderniser un site existant ?<span class="faq__icon"></span></summary>
+          <div class="faq__body"><p>Oui. Refonte complète ou modernisation ciblée, selon l'état du site et vos objectifs.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 06 CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section__head" data-reveal>
+        <p class="mono kicker">06 — Contact</p>
+        <h2 class="contact__title">Vous avez un projet en tête ? <br /><em>Parlons-en</em>.</h2>
+        <p class="lead">Un site à créer, un site à refondre, ou simplement une question. Écrivez-moi, je réponds personnellement.</p>
+        <a class="link-arrow" href="mailto:schricke.paul@gmail.com">schricke.paul@gmail.com</a>
+      </div>
+      <form class="glass form" id="contactForm" data-reveal novalidate aria-describedby="formStatus">
+        <div class="form__row">
+          <label><span class="mono">Nom <i aria-hidden="true">*</i></span><input type="text" name="name" autocomplete="name" required aria-required="true" /></label>
+          <label><span class="mono">Email <i aria-hidden="true">*</i></span><input type="email" name="email" autocomplete="email" required aria-required="true" inputmode="email" /></label>
+        </div>
+        <label><span class="mono">Entreprise</span><input type="text" name="company" autocomplete="organization" /></label>
+        <label><span class="mono">Quelques mots sur le projet <i aria-hidden="true">*</i></span><textarea name="message" rows="5" required aria-required="true"></textarea></label>
+        <label class="hp" aria-hidden="true"><span>Laissez ce champ vide</span><input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        <div class="form__foot">
+          <button class="glass glass-btn glass-btn--primary" type="submit">Envoyer</button>
+          <p class="mono form__status" id="formStatus" aria-live="polite">Vos coordonnées servent uniquement à vous répondre.</p>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Paul <em>Schricke</em></p>
+      <p class="footer__role mono">Créateur web indépendant · Gard, France</p>
+      <nav class="footer__links" aria-label="Liens de pied de page">
+        <a href="mailto:schricke.paul@gmail.com">schricke.paul@gmail.com</a>
+        <a href="https://www.linkedin.com/in/paulschricke/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+      <p class="footer__copy mono">© 2026 Paul Schricke</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

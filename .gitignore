@@ -1,0 +1,13 @@
+# Dépendances et build
+site/node_modules/
+site/dist/
+
+# Assets sources lourds (conservés en local uniquement)
+assets/hero-video-raw.mp4
+assets/showroom-oliv/
+
+# Système / éditeurs
+.DS_Store
+Thumbs.db
+*.log
+.claude/

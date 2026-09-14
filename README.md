@@ -1,45 +1,52 @@
-# Paulygone — paulygone.fr
+# Paul Schricke — landing page
 
-Site vitrine de Paulygone, activité de création de sites web à Nîmes (Gard).
+Site personnel de Paul Schricke, créateur de sites web indépendant (Nîmes, Gard).
+Landing page cinématique scroll-driven : vidéo de fond pilotée par le scroll, direction artistique « Atelier nocturne ».
 
 ## Stack
 
-- HTML / CSS / JavaScript pur — aucun framework, aucune dépendance
-- Hébergé sur **GitHub Pages** avec le domaine personnalisé `paulygone.fr` (fichier `CNAME`)
-- Formulaire de contact via **Web3Forms** (clé dans `script.js`)
-- Polices : **Fraunces** (titres, serif) + **Inter** (texte), via Google Fonts
+- [Vite 5](https://vitejs.dev/) · vanilla JS (modules ES)
+- [GSAP](https://gsap.com/) + ScrollTrigger · [Lenis](https://lenis.darkroom.engineering/) (scroll fluide)
+- Typographies : Fraunces, Manrope, JetBrains Mono (Google Fonts)
+- Visuels générés via Higgsfield (Nano Banana Pro, Seedance 2.0)
+
+## Lancer le projet
+
+```bash
+cd site
+npm install
+npm run dev        # http://localhost:5173
+npm run build -- --base=./   # build statique portable dans site/dist
+```
 
 ## Structure
 
 ```
-/
-├── index.html                      # Page d'accueil (one-page)
-├── style.css                       # Design system complet
-├── script.js                       # Interactions (scroll, FAQ, formulaire…)
-├── 404.html                        # Page introuvable
-├── mentions-legales.html           # Mentions légales
-├── politique-confidentialite.html  # Politique de confidentialité
-├── cgv.html                        # Conditions générales de vente
-├── sitemap.xml / robots.txt        # SEO
-├── videos/                         # Vidéo hero + poster
-└── *.webp / *.png / *.jpg          # Images (webp servi en priorité)
+site/
+  index.html              page principale
+  mentions-legales.html   page annexe (données à compléter)
+  src/style.css           layout, sections, charte
+  src/glass.css           surfaces en verre, boutons, chips
+  src/main.js             scroll, scrub vidéo, animations, formulaire
+  public/bg.mp4           vidéo de fond (1440x810, all-keyframe, 8 Mo)
+  public/img/             posters, captures Show Room Oliv, portraits
+content/copy.md           textes validés de toutes les sections
+assets/                   sources validées (images hero, aperçus)
 ```
 
-## Publier une modification
+## Avant la mise en ligne
 
-```bash
-git add .
-git commit -m "Description du changement"
-git push
-```
+- Remplacer `__DOMAINE__` dans `site/index.html`, `site/public/robots.txt` et `site/public/sitemap.xml`.
+- Renseigner `FORM_ENDPOINT` et `FORM_ACCESS_KEY` dans `site/src/main.js` (service d'envoi du formulaire).
+- Compléter `site/mentions-legales.html`.
 
-Le site est mis à jour automatiquement par GitHub Pages 1 à 2 minutes après le push.
+## Charte
 
-## Design system (style.css)
-
-Les couleurs et polices sont définies dans les variables `:root` en haut de `style.css` :
-blanc cassé `--bg`, encre `--ink`, or `--gold`, sombre `--dark`.
-
----
-
-© 2026 Paulygone — Paul Schricke · schricke.paul@gmail.com · 06 37 12 76 88
+| Rôle | Couleur |
+|---|---|
+| Fond, Noir atelier | `#0F0E0C` |
+| Surfaces, Bois brûlé | `#1A1815` |
+| Accent unique, Ambre | `#E9A23B` |
+| Texte, Ivoire | `#F1ECE3` |
+| Texte secondaire, Pierre | `#9A9188` |
+| Lignes, Trait | `#2C2925` |
