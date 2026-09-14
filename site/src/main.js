@@ -54,7 +54,7 @@ if (!useVideo) {
   bgv.addEventListener('loadedmetadata', arm, { once: true });
   lenis.on('scroll', ({ scroll, limit }) => applyScrub(scroll, limit));
   // Chargement différé : le poster s'affiche tout de suite, la vidéo arrive après le premier rendu.
-  const loadVideo = () => { bgv.preload = 'auto'; bgv.src = bgv.dataset.src; bgv.load(); };
+  const loadVideo = () => { bgv.preload = 'auto'; bgv.src = new URL('bg.mp4', new URL(import.meta.env.BASE_URL, location.href)).href; bgv.load(); };
   if (document.readyState === 'complete') setTimeout(loadVideo, 150);
   else window.addEventListener('load', () => setTimeout(loadVideo, 150), { once: true });
   window.__bgv = bgv;
