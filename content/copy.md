@@ -25,7 +25,7 @@ DÉFILER
 
 ## Mes réalisations parlent *pour moi*.
 
-Une réalisation racontée en détail, plutôt qu'une grille de miniatures.
+Deux projets racontés en détail, plutôt qu'une grille de miniatures.
 
 ### Show Room Oliv
 
@@ -53,6 +53,24 @@ DESIGN UX/UI · DÉVELOPPEMENT COMPLET · HÉBERGEMENT ET NOM DE DOMAINE · MISE
 - Animations qui respectent les préférences de mouvement du visiteur
 
 [ Voir le site en ligne → show-room-oliv.fr ]
+
+### Mas Belloc — PROJET DE DÉMONSTRATION (ajouté le 18/09/2026, à valider par Paul)
+
+MAISON D'HÔTES FICTIVE · UZÈS, GARD · SITE IMMERSIF AVEC DEVIS EN DIRECT
+
+**Le point de départ**
+Mas Belloc n'existe pas. C'est une maison d'hôtes que j'ai imaginée près d'Uzès pour montrer, sans contrainte de client, jusqu'où peut aller un site d'hébergement : quatre suites, un mas du XVIIIe, et tout l'univers à inventer.
+
+**L'objectif**
+Faire ressentir le lieu avant d'en parler, puis rendre la réservation évidente. Le visiteur doit avoir envie de pousser le portail, et connaître son prix sans envoyer un seul email.
+
+**Ma réponse**
+Une entrée en scène pilotée par le scroll : le portail est fermé, on fait défiler, il s'ouvre et on arrive dans le salon. Ensuite une identité claire et solaire, à l'opposé de celle-ci : lin, pierre blonde, terre cuite. Et un configurateur de séjour qui calcule le devis en direct selon les dates, la suite et les envies.
+
+**Ce que j'ai conçu**
+CONCEPT ET UNIVERS · DESIGN UX/UI · DÉVELOPPEMENT COMPLET · RÉDACTION · VISUELS ET VIDÉO GÉNÉRÉS PAR IA · MISE EN LIGNE
+
+[ Voir la démonstration en ligne → poloveni.github.io/mas-belloc ]
 
 ---
 

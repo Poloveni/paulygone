@@ -97,14 +97,13 @@ if (!reduced) {
   });
 }
 
-/* ---------- Scène Higgsfield de l'étude de cas : repli sur les captures si absente ---------- */
-const scene = document.getElementById('caseScene');
-if (scene) {
+/* ---------- Scènes Higgsfield des études de cas : repli sur les captures si l'image manque ---------- */
+document.querySelectorAll('.case__scene').forEach((scene) => {
   const img = scene.querySelector('img');
   const fail = () => scene.closest('.case__stage').classList.add('no-scene');
   if (img.complete && img.naturalWidth === 0) fail();
   img.addEventListener('error', fail, { once: true });
-}
+});
 
 /* ---------- Navigation ---------- */
 const nav = document.getElementById('nav');

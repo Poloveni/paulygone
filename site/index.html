@@ -106,25 +106,25 @@
       <div class="section__head" data-reveal>
         <p class="mono kicker">01 — Réalisations</p>
         <h2>Mes réalisations parlent <em>pour moi</em>.</h2>
-        <p class="lead">Une réalisation racontée en détail, plutôt qu'une grille de miniatures.</p>
+        <p class="lead">Deux projets racontés en détail, plutôt qu'une grille de miniatures.</p>
       </div>
 
-      <article class="case">
+      <article class="case" aria-labelledby="case-oliv">
         <div class="case__stage" data-reveal>
-          <figure class="case__scene" id="caseScene">
+          <figure class="case__scene">
             <picture>
               <source srcset="/img/oliv-scene.webp" type="image/webp" />
               <img src="/img/oliv-scene.jpg" alt="Le site Show Room Oliv présenté sur un écran et un téléphone, dans la lumière de l'atelier" loading="lazy" decoding="async" />
             </picture>
           </figure>
-          <figure class="device device--desktop" data-parallax="-40">
+          <figure class="device device--desktop">
             <div class="device__bar"><i></i><i></i><i></i><span class="mono">show-room-oliv.fr</span></div>
             <picture>
               <source srcset="/img/oliv-desktop-accueil.webp" type="image/webp" />
               <img src="/img/oliv-desktop-accueil.jpg" alt="Page d'accueil de Show Room Oliv sur ordinateur" loading="lazy" decoding="async" />
             </picture>
           </figure>
-          <figure class="device device--phone" data-parallax="60">
+          <figure class="device device--phone">
             <picture>
               <source srcset="/img/oliv-mobile-accueil.webp" type="image/webp" />
               <img src="/img/oliv-mobile-accueil.jpg" alt="Page d'accueil de Show Room Oliv sur mobile" loading="lazy" decoding="async" />
@@ -134,7 +134,8 @@
 
         <div class="case__copy">
           <header class="case__title" data-reveal>
-            <h3>Show Room Oliv</h3>
+            <p class="mono case__tag">Projet client</p>
+            <h3 id="case-oliv">Show Room Oliv</h3>
             <p class="mono case__meta">Boutique mode femme · Nîmes · Site vitrine one-page · Env. 2 semaines</p>
           </header>
 
@@ -193,6 +194,93 @@
           </div>
 
           <a class="link-arrow" href="https://show-room-oliv.fr/" target="_blank" rel="noopener" data-reveal>Voir le site en ligne <span class="mono">show-room-oliv.fr</span></a>
+        </div>
+      </article>
+
+      <article class="case case--reverse" aria-labelledby="case-belloc">
+        <div class="case__stage" data-reveal>
+          <figure class="case__scene">
+            <picture>
+              <source srcset="/img/mb-scene.webp" type="image/webp" />
+              <img src="/img/mb-scene.jpg" alt="Le site Mas Belloc présenté sur un ordinateur portable et un téléphone, dans la lumière de l'atelier" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+          <figure class="device device--desktop">
+            <div class="device__bar"><i></i><i></i><i></i><span class="mono">mas-belloc</span></div>
+            <picture>
+              <source srcset="/img/mb-desktop-accueil.webp" type="image/webp" />
+              <img src="/img/mb-desktop-accueil.jpg" alt="Page d'accueil du site Mas Belloc sur ordinateur" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+          <figure class="device device--phone">
+            <picture>
+              <source srcset="/img/mb-mobile-accueil.webp" type="image/webp" />
+              <img src="/img/mb-mobile-accueil.jpg" alt="Page d'accueil du site Mas Belloc sur mobile" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+
+        <div class="case__copy">
+          <header class="case__title" data-reveal>
+            <p class="mono case__tag">Projet de démonstration</p>
+            <h3 id="case-belloc">Mas Belloc</h3>
+            <p class="mono case__meta">Maison d'hôtes fictive · Uzès, Gard · Site immersif avec devis en direct</p>
+          </header>
+
+          <div class="glass case__card" data-reveal>
+            <h4 class="mono">Le point de départ</h4>
+            <p>Mas Belloc n'existe pas. C'est une maison d'hôtes que j'ai imaginée près d'Uzès pour montrer, sans contrainte de client, jusqu'où peut aller un site d'hébergement : quatre suites, un mas du XVIIIe, et tout l'univers à inventer.</p>
+          </div>
+          <div class="glass case__card" data-reveal>
+            <h4 class="mono">L'objectif</h4>
+            <p>Faire ressentir le lieu avant d'en parler, puis rendre la réservation évidente. Le visiteur doit avoir envie de pousser le portail, et connaître son prix sans envoyer un seul email.</p>
+          </div>
+          <div class="glass case__card case__card--accent" data-reveal>
+            <h4 class="mono">Ma réponse</h4>
+            <p>Une entrée en scène pilotée par le scroll : le portail est fermé, on fait défiler, il s'ouvre et on arrive dans le salon. Ensuite une identité claire et solaire, à l'opposé de celle-ci : lin, pierre blonde, terre cuite. Et un configurateur de séjour qui calcule le devis en direct selon les dates, la suite et les envies.</p>
+          </div>
+
+          <div class="case__delivered" data-reveal>
+            <h4 class="mono">Ce que j'ai conçu</h4>
+            <ul class="chips">
+              <li class="glass glass-chip">Concept et univers</li>
+              <li class="glass glass-chip">Design UX/UI</li>
+              <li class="glass glass-chip">Développement complet</li>
+              <li class="glass glass-chip">Rédaction</li>
+              <li class="glass glass-chip">Visuels et vidéo générés par IA</li>
+              <li class="glass glass-chip">Mise en ligne</li>
+            </ul>
+          </div>
+
+          <div class="case__details" data-reveal>
+            <h4 class="mono">Dans le détail</h4>
+            <ul class="details">
+              <li>Vidéo d'ouverture liée au scroll, du portail fermé jusqu'à l'intérieur de la maison</li>
+              <li>Configurateur de séjour : dates, voyageurs, suite, options, devis recalculé en direct</li>
+              <li>Règles tarifaires réelles : haute saison, durée minimale, remise long séjour, taxe de séjour</li>
+              <li>Alerte de capacité quand la suite choisie ne convient pas au nombre de voyageurs</li>
+              <li>Météo du lieu en temps réel, sans compte ni clé à gérer</li>
+              <li>Quatre fiches de suites, infos pratiques, récapitulatif du devis prêt à envoyer</li>
+              <li>Image fixe à la place de la vidéo sur mobile et pour les visiteurs sensibles au mouvement</li>
+            </ul>
+          </div>
+
+          <div class="case__gallery" data-reveal>
+            <figure class="device device--desktop device--small">
+              <div class="device__bar"><i></i><i></i><i></i><span class="mono">Les suites</span></div>
+              <picture><source srcset="/img/mb-desktop-suites.webp" type="image/webp" /><img src="/img/mb-desktop-suites.jpg" alt="Fiches des suites du site Mas Belloc" loading="lazy" decoding="async" /></picture>
+            </figure>
+            <figure class="device device--desktop device--small">
+              <div class="device__bar"><i></i><i></i><i></i><span class="mono">Autour</span></div>
+              <picture><source srcset="/img/mb-desktop-autour.webp" type="image/webp" /><img src="/img/mb-desktop-autour.jpg" alt="Section Autour du site Mas Belloc : piscine, Uzès, table" loading="lazy" decoding="async" /></picture>
+            </figure>
+            <figure class="device device--desktop device--small">
+              <div class="device__bar"><i></i><i></i><i></i><span class="mono">Le devis</span></div>
+              <picture><source srcset="/img/mb-desktop-devis.webp" type="image/webp" /><img src="/img/mb-desktop-devis.jpg" alt="Configurateur de séjour et devis en direct du site Mas Belloc" loading="lazy" decoding="async" /></picture>
+            </figure>
+          </div>
+
+          <a class="link-arrow" href="https://poloveni.github.io/mas-belloc/" target="_blank" rel="noopener" data-reveal>Voir la démonstration en ligne <span class="mono">mas-belloc</span></a>
         </div>
       </article>
     </section>
