@@ -1,7 +1,7 @@
 # Paul Schricke — landing page
 
 Site personnel de Paul Schricke, créateur de sites web indépendant (Nîmes, Gard).
-Landing page cinématique scroll-driven : vidéo de fond pilotée par le scroll, direction artistique « Atelier nocturne ».
+Landing page cinématique : portrait vidéo vivant en boucle, cadrage et voile pilotés par le scroll, direction artistique « Atelier nocturne ».
 
 ## Stack
 
@@ -28,7 +28,8 @@ site/
   src/style.css           layout, sections, charte
   src/glass.css           surfaces en verre, boutons, chips
   src/main.js             scroll, scrub vidéo, animations, formulaire
-  public/bg.mp4           vidéo de fond (1440x810, all-keyframe, 8 Mo)
+  public/bg.mp4           portrait vivant en boucle, desktop (1920x1080, 5,8 Mo)
+  public/bg-mobile.mp4    même boucle pour mobile (1280x720, 0,7 Mo)
   public/img/             posters, captures Show Room Oliv, portraits
 content/copy.md           textes validés de toutes les sections
 assets/                   sources validées (images hero, aperçus)

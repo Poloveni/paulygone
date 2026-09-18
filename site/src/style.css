@@ -70,7 +70,9 @@ h1 em, h2 em, h3 em, .nav__logo em, .footer__name em {
   position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100lvh;
   pointer-events: none;
 }
-.bg-video { z-index: 0; object-fit: cover; object-position: 62% 40%; background: var(--bg); }
+.bg-video { z-index: 0; object-fit: cover; object-position: 62% 40%; background: var(--bg); transform-origin: 62% 0%; will-change: transform; }
+/* Fenêtres en hauteur (mobile, tablette portrait) : on recadre vers le visage, qui est à droite de l'image */
+@media (max-aspect-ratio: 1/1) { .bg-video { object-position: 82% 30%; transform-origin: 82% 0%; } }
 .bg-poster { z-index: 0; display: none; }
 .bg-poster img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 30%; }
 @media (max-width: 767px) { .bg-poster img { object-position: 82% 20%; } }

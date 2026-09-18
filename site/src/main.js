@@ -29,34 +29,50 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
   });
 });
 
-/* ---------- Vidéo de fond scrubée au scroll ---------- */
+/* ---------- Portrait vivant : vidéo en boucle + dérive de caméra liée au scroll ----------
+   La vidéo tourne en temps réel (clignements, respiration) pour que le portrait ne soit jamais figé.
+   Le scroll, lui, pilote une légère dérive de cadrage et le voile : il reste réversible et sans inertie. */
 const bgv = document.getElementById('bgv');
-const useVideo = !touch && !reduced;
+const saveData = !!(navigator.connection && navigator.connection.saveData);
+const useVideo = !reduced && !saveData;
 
 if (!useVideo) {
   body.classList.add('no-video');
   bgv.remove();
 } else {
-  let lastT = -1;
-  let ready = false;
-  const applyScrub = (scroll, limit) => {
-    if (!ready || !bgv.duration) return;
-    const p = Math.min(1, Math.max(0, scroll / Math.max(1, limit)));
-    const t = p * (bgv.duration - 0.05);
-    if (Math.abs(t - lastT) >= 1 / 48) { bgv.currentTime = t; lastT = t; }
+  const small = matchMedia('(max-width: 767px)').matches;
+  const file = small ? 'bg-mobile.mp4' : 'bg.mp4';
+  bgv.loop = true;
+  bgv.muted = true;
+  const toPoster = () => { body.classList.add('no-video'); };
+  bgv.addEventListener('error', toPoster, { once: true });
+  // Chargement différé : le poster s'affiche tout de suite, la vidéo prend le relais sur la même image.
+  const loadVideo = () => {
+    bgv.preload = 'auto';
+    bgv.src = new URL(file, new URL(import.meta.env.BASE_URL, location.href)).href;
+    bgv.load();
+    tryPlay();
   };
-  const arm = () => {
-    if (ready) return;
-    ready = true;
-    bgv.pause();
-    applyScrub(lenis.scroll, lenis.limit);
-  };
-  bgv.addEventListener('loadedmetadata', arm, { once: true });
-  lenis.on('scroll', ({ scroll, limit }) => applyScrub(scroll, limit));
-  // Chargement différé : le poster s'affiche tout de suite, la vidéo arrive après le premier rendu.
-  const loadVideo = () => { bgv.preload = 'auto'; bgv.src = new URL('bg.mp4', new URL(import.meta.env.BASE_URL, location.href)).href; bgv.load(); };
+  // Lecture auto refusée (onglet en arrière-plan, économie d'énergie…) : la première image reste affichée,
+  // identique au poster, et on relance à la première interaction ou au retour sur l'onglet.
+  let wantPlay = true;
+  const tryPlay = () => { if (!wantPlay) return; const p = bgv.play(); if (p && p.catch) p.catch(() => {}); };
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((ev) => window.addEventListener(ev, () => { if (bgv.paused) tryPlay(); }, { passive: true }));
   if (document.readyState === 'complete') setTimeout(loadVideo, 150);
   else window.addEventListener('load', () => setTimeout(loadVideo, 150), { once: true });
+
+  // Dérive de caméra pilotée par le scroll (s'arrête quand on s'arrête, revient quand on remonte).
+  gsap.fromTo(bgv, { scale: 1.03, xPercent: 0 }, {
+    scale: 1.1, xPercent: -1.2, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+  });
+
+  // Inutile de décoder la vidéo quand le voile la recouvre presque entièrement.
+  ScrollTrigger.create({
+    trigger: '#work', start: 'top 15%', endTrigger: '#contact', end: 'top 95%',
+    onToggle: (self) => { wantPlay = !self.isActive; if (self.isActive) bgv.pause(); else tryPlay(); },
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) bgv.pause(); else tryPlay(); });
   window.__bgv = bgv;
 }
 window.__lenis = lenis;
